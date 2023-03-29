@@ -295,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -20}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2004373990}
-  offset: {x: 0, y: 2, z: -10}
+  offset: {x: 0, y: 2, z: -20}
   smoothFactor: 5
 --- !u!1 &1716649383
 GameObject:
@@ -353,7 +353,8 @@ MonoBehaviour:
   myRigidBody: {fileID: 1716649389}
   playerBase: 1
   radiusExtends: 5
-  verticalInput: 0
+  cube: {fileID: 7826154401641725583, guid: 545ce0a7d1fca444ba228824120bc1b1, type: 3}
+  scaleForce: 5
   lineObject: {fileID: 1898881815}
   snapToBaseRange: 0.3
 --- !u!23 &1716649386
