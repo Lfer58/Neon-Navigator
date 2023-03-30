@@ -120,9 +120,12 @@ public class pathDotMovement : MonoBehaviour
         if (isPathCreated) {
             line.positionCount = i + 1;
             line.SetPosition(i++, new Vector3(transform.position.x, transform.position.y - 0.1f, 0));
+            
+            // Calculates distance from the base player position so that the path only extends outward to a distance specificied by radiusExtends.
             distanceFromPlayer = (float)Math.Sqrt(Math.Pow(positionEndX - playerX, 2) + Math.Pow(positionEndY - playerY, 2));
-            currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
-            Debug.Log(distanceFromPlayer);
+            if (distanceFromPlayer < radiusExtends) {
+                currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
+            }
         }
 
         if (!Input.GetButton("Fire1")) {
