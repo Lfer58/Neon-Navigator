@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     //Private var - input of movement
     private float moveInput;
+    private Vector2 movementInput;
 
     [Tooltip("How high player jumps")]
     public float jumpForce;
@@ -42,15 +43,29 @@ public class PlayerController : MonoBehaviour
 
     // Rigid body for movement
     private Rigidbody rb;
-    
+    private PlayerControls playercontrols;
 
     // Start is called before the first frame update
     void Start()
     {
         // Intializes the rigid body
         rb = GetComponent<Rigidbody>();
+        
 
         currentJumpAmount = jumpAmount;
+    }
+
+    private void OnEnable() {
+        if(playercontrols == null){
+            playercontrols = new PlayerControls();
+
+            playercontrols.Player.Movement.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+        }
+        playercontrols.Enable();
+    }
+
+    private void OnDisable() {
+        playercontrols.Disable();
     }
 
     // Update is called once per frame
@@ -79,7 +94,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // Checks if player is touching the ground
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f, whatIsGround);
+        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f, whatIsGround);
+        RaycastHit hit;
+        Vector3 rayCastorigin = transform.position;
+        if(Physics.SphereCast(rayCastorigin, 0.2f, Vector3.down, out hit, playerHeight * 0.5f, whatIsGround)){
+            grounded = true;
+        }else{
+            grounded = false;
+        }
 
         //Velocity check added to make sure jump isnt reset an extra time
         if (grounded && rb.velocity.y < 0)
@@ -95,8 +117,8 @@ public class PlayerController : MonoBehaviour
 
     void MovementInput()
     {
-        //add horizontal adds based on arrow/wasd left = -1; right = 1; getaxisRAW is more snappy
-        moveInput = Input.GetAxis("Horizontal");
+        
+        moveInput = movementInput.x;
         rb.velocity = new Vector3(moveInput * walkSpeed, rb.velocity.y, 0);
     }
 
@@ -130,7 +152,9 @@ public class PlayerController : MonoBehaviour
 
     void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && readyToJump && currentJumpAmount > 0)
+        //if (Input.GetKeyDown(KeyCode.Space) && readyToJump && currentJumpAmount > 0)
+        // Change WasPressedThisFrame() to WasPreformedThisFrame() if you want to be able to hold down jump and repeativily jump
+        if (playercontrols.Player.Jump.WasPressedThisFrame() && readyToJump && currentJumpAmount > 0)
         {
             Debug.Log("Jump");
             jumpInput = true;
