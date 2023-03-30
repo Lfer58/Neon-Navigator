@@ -17,6 +17,7 @@ public class pathDotMovement : MonoBehaviour
     private Vector3 mousePositionActual;
     
     public float radiusExtends;
+    private float distanceFromPlayer;
 
     public GameObject cube;
     private GameObject currentPath; //path instance being generated
@@ -58,7 +59,7 @@ public class pathDotMovement : MonoBehaviour
 
         createPathPositions();
 
-        if (Input.GetButton("Fire1")) {
+        if (!Input.GetButton("Fire1")) {
             valueReset();
         }
 
@@ -119,7 +120,9 @@ public class pathDotMovement : MonoBehaviour
         if (isPathCreated) {
             line.positionCount = i + 1;
             line.SetPosition(i++, new Vector3(transform.position.x, transform.position.y - 0.1f, 0));
+            distanceFromPlayer = (float)Math.Sqrt(Math.Pow(positionEndX - playerX, 2) + Math.Pow(positionEndY - playerY, 2));
             currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
+            Debug.Log(distanceFromPlayer);
         }
 
         if (!Input.GetButton("Fire1")) {
@@ -200,7 +203,6 @@ public class pathDotMovement : MonoBehaviour
                 } else {
                     verticalInput = -1;
                 }
-                Debug.Log(verticalInput);
 
                 // code for straightline creation
                 // setVerticalInput();
