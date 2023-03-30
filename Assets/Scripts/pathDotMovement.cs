@@ -14,16 +14,19 @@ public class pathDotMovement : MonoBehaviour
     private float playerX;
     private Quaternion playerRotation;
     private Boolean faceRight;
+    private Vector3 mousePositionActual;
     
     public float radiusExtends;
 
     public GameObject cube;
     private GameObject currentPath; //path instance being generated
     private float pathRotation; // How much the path rotates before extending.
+    private float pathRotationBase;
     public float scaleForce;
     private float pathInversion;
     private int verticalInput;
     private int horizontalDirection;
+    private int verticalDirection;
 
     private float positionEnd;
     private float positionEndX;
@@ -55,13 +58,31 @@ public class pathDotMovement : MonoBehaviour
 
         createPathPositions();
 
-        valueReset();
+        if (Input.GetButton("Fire1")) {
+            valueReset();
+        }
 
         if (!Input.GetButton("Vertical") && currentPath != null) {
             pathRotation = currentPath.transform.eulerAngles.z;
         }
 
+        // code for mouse creation.
+        // takes in mouse position, and sets the initial rotation based on it.
+        if (Input.GetButtonDown("Fire1")) {
+
+            mousePositionActual = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 20f));
+
+            float mouseX = mousePositionActual.x;
+            float mouseY = mousePositionActual.y;
+
+            float mousePos = (mouseY - playerY) / (mouseX - playerX);
+
+            pathRotation = (float)(Mathf.Atan2((mouseY - playerY), (mouseX - playerX)) * Mathf.Rad2Deg);
+            pathRotationBase = pathRotation;
+        }
+
         pathCreation();
+
     }
 
     public bool checkRadius() {
@@ -78,16 +99,21 @@ public class pathDotMovement : MonoBehaviour
         // This fix was necessary since GetButtonDown only returns true for the initial click, and we need to continue making paths 
         // after we stop altering the height.
         if ((Input.GetButtonDown("Fire1") && !isPathVerticalTravel) || (isPathVerticalTravel && !Input.GetButton("Vertical"))) {
-            isFaceRight();
-            if (faceRight) {
-                pathRotation = 0;
-            } else {
-                pathRotation = 180;
-            }
+            pathRotation = pathRotationBase;
+
+            // code for straightline creation.
+            // isFaceRight();
+            // if (faceRight) {
+            //     pathRotation = 0;
+            // } else {
+            //     pathRotation = 180;
+            // }
+
             currentPath = Instantiate(cube, new Vector3(positionEndX, positionEndY, 0), playerRotation);
             currentPath.transform.eulerAngles = new Vector3 (0,0, pathRotation);
             isPathCreated = true;
         }
+
         // Once path is created, it'll scale out linearly with the force in scaleForce
         // It should stop after the path reaches a certain distance, but its not yet implemented.
         if (isPathCreated) {
@@ -95,6 +121,7 @@ public class pathDotMovement : MonoBehaviour
             line.SetPosition(i++, new Vector3(transform.position.x, transform.position.y - 0.1f, 0));
             currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
         }
+
         if (!Input.GetButton("Fire1")) {
             transform.position = new Vector3(playerX, playerY, 0);
         }
@@ -107,15 +134,17 @@ public class pathDotMovement : MonoBehaviour
         // Only works when path is actually being created.
         if (isPathCreated && Input.GetButtonDown("Vertical")) {
             isFaceRight();
-            pathRotation += 45;
+            setVerticalInput();
+            pathRotation += 45 * verticalInput;
             setVerticalInput();
             currentPath = Instantiate(cube, new Vector3(positionEndX, positionEndY, 0), playerRotation);
+
             // Rotates upwards if positive, or downwards if negative.
             // Two directional multiplicatives as a form of quadrant balancing.
             // Ex. if using the up arrows and facing to the right, the values are 1 and -1 respectively.
                 // This then takes the right angle of 180, the added 45, thus making it 225. Then applying
                 // the multiplicatives makes it -225, or 135. Thus, quadrant 2, the desired quadrant. 
-            currentPath.transform.eulerAngles = new Vector3 (0,0, pathRotation * verticalInput * horizontalDirection);
+            currentPath.transform.eulerAngles = new Vector3 (0,0, pathRotation * horizontalDirection);
             isPathVerticalTravel = true;
         }
         if (!Input.GetButton("Vertical")) {
@@ -147,6 +176,10 @@ public class pathDotMovement : MonoBehaviour
 
     private void isFaceRight() {
         faceRight = (player.transform.eulerAngles.y != 180);
+
+        // if (pathRotation > -90 )
+        
+        // Code for straightline creation.
         if (faceRight) {
             horizontalDirection = 1;
         } else {
@@ -160,10 +193,21 @@ public class pathDotMovement : MonoBehaviour
         if (currentPath != null) {
             positionEnd = currentPath.transform.localScale.x;
             if (pathRotation != 0 && pathRotation != 180) {
-                setVerticalInput();
-                positionEndY = (float)(positionEnd * Math.Abs(Math.Sin(pathRotation * Math.PI / 180))) * verticalInput + currentPath.transform.position.y;
+                // code for mouse creation.
+                // similar to setVerticalInput but purely based on direction of pathing for certainty.
+                if (currentPath.transform.eulerAngles.z < 180) {
+                    verticalInput = 1;
+                } else {
+                    verticalInput = -1;
+                }
+                Debug.Log(verticalInput);
+
+                // code for straightline creation
+                // setVerticalInput();
+
+                positionEndY = (float)(positionEnd * Math.Abs(Math.Sin(pathRotation * Mathf.Deg2Rad))) * verticalInput + currentPath.transform.position.y;
                 isFaceRight();
-                positionEndX = (float)(positionEnd * Math.Abs(Math.Cos(pathRotation * Math.PI / 180))) * horizontalDirection + currentPath.transform.position.x;
+                positionEndX = (float)(positionEnd * Math.Abs(Math.Cos(pathRotation * Mathf.Deg2Rad))) * horizontalDirection + currentPath.transform.position.x;
             } else {
                 positionEndX = positionEnd * horizontalDirection + currentPath.transform.position.x;
                 positionEndY = currentPath.transform.position.y;
@@ -172,14 +216,12 @@ public class pathDotMovement : MonoBehaviour
     }
 
     private void valueReset() {
-        if (!Input.GetButton("Fire1")) {
-            currentPath = null;
-            isPathCreated = false;
-            isPathVerticalTravel = false;
-            positionEnd = playerX;
-            positionEndX = playerX;
-            positionEndY = playerY;
-            pathRotation = 0;
-        }
+        currentPath = null;
+        isPathCreated = false;
+        isPathVerticalTravel = false;
+        positionEnd = playerX;
+        positionEndX = playerX;
+        positionEndY = playerY;
+        pathRotation = 0;
     }
 }
