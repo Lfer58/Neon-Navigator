@@ -68,6 +68,22 @@ public class pathDotMovement : MonoBehaviour
             float mousePos = (mouseY - playerY) / (mouseX - playerX);
 
             pathRotation = (float)(Mathf.Atan2((mouseY - playerY), (mouseX - playerX)) * Mathf.Rad2Deg);
+
+            //Constrained to 60 degree angles to the right and left of the player
+            if (pathRotation > 30 && pathRotation < 150) {
+                if (pathRotation < 90) {
+                    pathRotation = 30;
+                } else if (pathRotation > 90) {
+                    pathRotation = 150;
+                }
+            } else if (pathRotation < -30 && pathRotation > -150) {
+                if (pathRotation < -90) {
+                    pathRotation = -150;
+                } else if (pathRotation > -90) {
+                    pathRotation = -30;
+                }
+            }
+            
             pathRotationBase = pathRotation;
         }
 
