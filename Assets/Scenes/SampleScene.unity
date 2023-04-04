@@ -350,6 +350,7 @@ MonoBehaviour:
   player: {fileID: 2004373991}
   playerBase: 1
   radiusExtends: 5
+  rotationHeight: 30
   path: {fileID: 7826154401641725583, guid: 545ce0a7d1fca444ba228824120bc1b1, type: 3}
   scaleForce: 10
 --- !u!4 &1716649388

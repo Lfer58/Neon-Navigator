@@ -17,6 +17,7 @@ public class pathDotMovement : MonoBehaviour
     
     public float radiusExtends;
     private float distanceFromPlayer;
+    public float rotationHeight;
 
     public GameObject path;
     private GameObject currentPath; //path instance being generated
@@ -83,7 +84,7 @@ public class pathDotMovement : MonoBehaviour
                     pathRotation = -30;
                 }
             }
-            
+
             pathRotationBase = pathRotation;
         }
 
@@ -131,9 +132,9 @@ public class pathDotMovement : MonoBehaviour
             isFaceRight();
             setVerticalInput();
             if (pathRotation < 90 || pathRotation > 270) {
-                pathRotation += 45 * verticalInput;
+                pathRotation += rotationHeight * verticalInput;
             } else {
-                pathRotation += 45 * verticalInput * -1;
+                pathRotation += rotationHeight * verticalInput * -1;
             }
             currentPath = Instantiate(path, new Vector3(positionEndX, positionEndY, 0), playerRotation);
 
