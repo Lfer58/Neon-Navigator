@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     // Rigid body for movement
     private Rigidbody rb;
-    private PlayerControls playercontrols;
+    private PlayerControls playerControls;
 
     // Start is called before the first frame update
     void Start()
@@ -56,16 +56,16 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnEnable() {
-        if(playercontrols == null){
-            playercontrols = new PlayerControls();
+        if(playerControls == null){
+            playerControls = new PlayerControls();
 
-            playercontrols.Player.Movement.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+            playerControls.Player.Movement.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         }
-        playercontrols.Enable();
+        playerControls.Enable();
     }
 
     private void OnDisable() {
-        playercontrols.Disable();
+        playerControls.Disable();
     }
 
     // Update is called once per frame
@@ -153,8 +153,8 @@ public class PlayerController : MonoBehaviour
     void JumpInput()
     {
         //if (Input.GetKeyDown(KeyCode.Space) && readyToJump && currentJumpAmount > 0)
-        // Change WasPressedThisFrame() to WasPreformedThisFrame() if you want to be able to hold down jump and repeativily jump
-        if (playercontrols.Player.Jump.WasPressedThisFrame() && readyToJump && currentJumpAmount > 0)
+        // Change WasPressedThisFrame() to IsPressed() if you want to be able to hold down jump and repeativily jump
+        if (playerControls.Player.Jump.WasPressedThisFrame() && readyToJump && currentJumpAmount > 0)
         {
             Debug.Log("Jump");
             jumpInput = true;

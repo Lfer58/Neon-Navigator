@@ -32,12 +32,26 @@ public class pathDotMovement : MonoBehaviour
     private float positionEndY;
     private Boolean isPathCreated = false;
     private Boolean isPathVerticalTravel = false;
+    
+    private PlayerControls playerControls;
 
     // Start is called before the first frame update
     void Start()
     {
 
         playerRotation = player.transform.rotation;
+    }
+
+    private void OnEnable() {
+        if(playerControls == null){
+            playerControls = new PlayerControls();
+
+        }
+        playerControls.Enable();
+    }
+
+    private void OnDisable() {
+        playerControls.Disable();
     }
 
     // Update is called once per frame
@@ -49,17 +63,20 @@ public class pathDotMovement : MonoBehaviour
 
         createPathPositions();
 
-        if (!Input.GetButton("Fire1")) {
+        //if (!Input.GetButton("Fire1")) {
+        if (!playerControls.Player.Fire.IsPressed()) {
             valueReset();
         }
 
-        if (!Input.GetButton("Vertical") && currentPath != null) {
+        //if (!Input.GetButton("Vertical") && currentPath != null) {
+        if (!playerControls.Player.PathMovement.IsPressed() && currentPath != null) {
             pathRotation = currentPath.transform.eulerAngles.z;
         }
 
         // code for mouse creation.
         // takes in mouse position, and sets the initial rotation based on it.
-        if (Input.GetButtonDown("Fire1")) {
+        //if (Input.GetButtonDown("Fire1")) {
+        if (playerControls.Player.Fire.WasPressedThisFrame()) {
 
             mousePositionActual = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 20f));
 
@@ -99,7 +116,8 @@ public class pathDotMovement : MonoBehaviour
         // while not distrubing the whole line, and on calling the pathHeight function, is PathVerticalTravel will become false.
         // This fix was necessary since GetButtonDown only returns true for the initial click, and we need to continue making paths 
         // after we stop altering the height.
-        if ((Input.GetButtonDown("Fire1") && !isPathVerticalTravel) || (isPathVerticalTravel && !Input.GetButton("Vertical"))) {
+        //if ((Input.GetButtonDown("Fire1") && !isPathVerticalTravel) || (isPathVerticalTravel && !Input.GetButton("Vertical"))) {
+        if ((playerControls.Player.Fire.WasPressedThisFrame() && !isPathVerticalTravel) || (isPathVerticalTravel && !playerControls.Player.PathMovement.IsPressed())) {
             pathRotation = pathRotationBase;
 
             // code for straightline creation.
@@ -128,7 +146,8 @@ public class pathDotMovement : MonoBehaviour
     }
     private void pathHeight() {
         // Only works when path is actually being created.
-        if (isPathCreated && Input.GetButtonDown("Vertical")) {
+        //if (isPathCreated && Input.GetButtonDown("Vertical")) {
+        if (isPathCreated && playerControls.Player.PathMovement.WasPressedThisFrame()) {
             isFaceRight();
             setVerticalInput();
             if (pathRotation < 90 || pathRotation > 270) {
@@ -142,17 +161,22 @@ public class pathDotMovement : MonoBehaviour
             currentPath.transform.eulerAngles = new Vector3 (0,0, pathRotation);
             isPathVerticalTravel = true;
         }
-        if (!Input.GetButton("Vertical")) {
+        //if (!Input.GetButton("Vertical")) {
+        if (!playerControls.Player.PathMovement.IsPressed()) {
             isPathVerticalTravel = false;
         }
     }
 
     private void setVerticalInput() {
+        var vertDirection = playerControls.Player.PathMovement.ReadValue<Vector2>();
+        verticalInput = (int) vertDirection.y;
+        /*
         if (Input.GetAxis("Vertical") > 0) {
                 verticalInput = 1;
             } else {
                 verticalInput = -1;
             }
+        */
     }
 
     private void isFaceRight() {
