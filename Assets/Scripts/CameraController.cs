@@ -17,9 +17,22 @@ public class CameraController : MonoBehaviour
     [Range(1,10)]
     public float smoothFactor;
 
+    public bool cameraActivation;
+    public CameraTrigger trigger;
+    public float speed;
+
+    private void Start() 
+    {
+        cameraActivation = false;
+    }
+
     private void FixedUpdate()
     {
-        Follow();
+        if (!cameraActivation) {
+            Follow();
+        } else {
+            transform.position += trigger.movement * Time.deltaTime * speed;
+        }
     }
 
     void Follow()

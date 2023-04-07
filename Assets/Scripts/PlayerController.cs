@@ -156,7 +156,6 @@ public class PlayerController : MonoBehaviour
         // Change WasPressedThisFrame() to IsPressed() if you want to be able to hold down jump and repeativily jump
         if (playerControls.Player.Jump.WasPressedThisFrame() && readyToJump && currentJumpAmount > 0)
         {
-            Debug.Log("Jump");
             jumpInput = true;
         }
     }
