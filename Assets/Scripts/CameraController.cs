@@ -31,7 +31,14 @@ public class CameraController : MonoBehaviour
         if (!cameraActivation) {
             Follow();
         } else {
-            transform.position += trigger.movement * Time.deltaTime * speed;
+            if (trigger.direction.Equals("left") || trigger.direction.Equals("right")) {
+                transform.position = new Vector3(transform.position.x, player.transform.position.y + offset.y, transform.position.z);
+                transform.position += trigger.movement * Time.deltaTime * speed;
+            }
+            if (trigger.direction.Equals("up") || trigger.direction.Equals("down")) {
+                transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+                transform.position += trigger.movement * Time.deltaTime * speed;
+            }
         }
     }
 
