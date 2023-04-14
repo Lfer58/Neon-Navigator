@@ -150,6 +150,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public bool GetFaceRight() {
+        return faceRight;
+    }
+
     void JumpInput()
     {
         //if (Input.GetKeyDown(KeyCode.Space) && readyToJump && currentJumpAmount > 0)
