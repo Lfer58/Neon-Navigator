@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 1709722218}
   - component: {fileID: 1709722221}
   - component: {fileID: 1709722220}
-  - component: {fileID: 1709722219}
+  - component: {fileID: 1709722222}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -695,22 +695,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1709722219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709722213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea53d69388158945b8dc7ee81bd313c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHeight: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1709722220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,14 +719,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f8915e70f4482468124c3937df3b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
+  walkSpeed: 5
   jumpForce: 10
   jumpAmount: 2
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   dashForce: 0
+--- !u!114 &1709722222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709722213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397bee52ae3ce46a4bf4e2ee4b5a48c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1709722221}
+  playerBase: 1
+  radiusExtends: 5
+  rotationHeight: 30
+  creationRestraint: 30
+  path: {fileID: 7826154401641725583, guid: 545ce0a7d1fca444ba228824120bc1b1, type: 3}
+  scaleForce: 10
+  isPuzzleLevel: 1
+  battery: {fileID: 1710546628}
 --- !u!1 &1710546628
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710546629}
   - component: {fileID: 1710546631}
+  - component: {fileID: 1710546632}
   - component: {fileID: 1710546630}
   m_Layer: 5
   m_Name: Energy
@@ -778,7 +784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 368, y: 175}
+  m_AnchoredPosition: {x: 806, y: 493}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710546630
@@ -866,7 +872,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -88.75, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -880,6 +886,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710546628}
   m_CullTransparentMesh: 1
+--- !u!114 &1710546632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710546628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa30ef7f917664348b1f45331556569d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyLabel: {fileID: 1710546630}
+  energy: 100
 --- !u!1 &1726796553
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +912,6 @@ GameObject:
   - component: {fileID: 1726796556}
   - component: {fileID: 1726796555}
   - component: {fileID: 1726796559}
-  - component: {fileID: 1726796558}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -966,19 +985,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1726796558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726796553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa30ef7f917664348b1f45331556569d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyLabel: {fileID: 1710546630}
 --- !u!114 &1726796559
 MonoBehaviour:
   m_ObjectHideFlags: 0

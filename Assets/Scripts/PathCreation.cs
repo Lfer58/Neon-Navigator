@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pathDotMovement : MonoBehaviour
+public class PathCreation : MonoBehaviour
 {
     
     public PlayerController player;
@@ -17,7 +17,8 @@ public class pathDotMovement : MonoBehaviour
     
     public float radiusExtends;
     private float distanceFromPlayer;
-    public float rotationHeight;
+    public float rotationHeight; //When using up and down, how much the path rotates
+    public float creationRestraint; //Angle of restraint for path creation
 
     public GameObject path;
     private GameObject currentPath; //path instance being generated
@@ -34,6 +35,10 @@ public class pathDotMovement : MonoBehaviour
     private Boolean isPathVerticalTravel = false;
     
     private PlayerControls playerControls;
+    public Boolean isPuzzleLevel;
+
+    public GameObject battery;
+    private float energyCount;
 
     // Start is called before the first frame update
     void Start()
@@ -61,51 +66,23 @@ public class pathDotMovement : MonoBehaviour
 
         playerY = player.transform.position.y - playerBase;
 
-        createPathPositions();
+        energyCount = battery.GetComponent<LineEnergy>().energy;
 
-        //if (!Input.GetButton("Fire1")) {
-        if (!playerControls.Player.Fire.IsPressed()) {
-            valueReset();
-        }
+        if (energyCount >= 0) {
+            createPathPositions();
 
-        //if (!Input.GetButton("Vertical") && currentPath != null) {
-        if (!playerControls.Player.PathMovement.IsPressed() && currentPath != null) {
-            pathRotation = currentPath.transform.eulerAngles.z;
-        }
-
-        // code for mouse creation.
-        // takes in mouse position, and sets the initial rotation based on it.
-        //if (Input.GetButtonDown("Fire1")) {
-        if (playerControls.Player.Fire.WasPressedThisFrame()) {
-
-            mousePositionActual = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 20f));
-
-            float mouseX = mousePositionActual.x;
-            float mouseY = mousePositionActual.y;
-
-            float mousePos = (mouseY - playerY) / (mouseX - playerX);
-
-            pathRotation = (float)(Mathf.Atan2((mouseY - playerY), (mouseX - playerX)) * Mathf.Rad2Deg);
-
-            //Constrained to 60 degree angles to the right and left of the player
-            if (pathRotation > 30 && pathRotation < 150) {
-                if (pathRotation < 90) {
-                    pathRotation = 30;
-                } else if (pathRotation > 90) {
-                    pathRotation = 150;
-                }
-            } else if (pathRotation < -30 && pathRotation > -150) {
-                if (pathRotation < -90) {
-                    pathRotation = -150;
-                } else if (pathRotation > -90) {
-                    pathRotation = -30;
-                }
+            //if (!Input.GetButton("Fire1")) {
+            if (!playerControls.Player.Fire.IsPressed()) {
+                valueReset();
             }
 
-            pathRotationBase = pathRotation;
-        }
+            setRotation();
 
-        pathCreation();
+            pathCreation();
+            Debug.Log(energyCount);
+        } else {
+            valueReset();
+        }
 
     }
 
@@ -138,8 +115,12 @@ public class pathDotMovement : MonoBehaviour
         if (isPathCreated) {
             // Calculates distance from the base player position so that the path only extends outward to a distance specificied by radiusExtends.
             distanceFromPlayer = (float)Math.Sqrt(Math.Pow(positionEndX - playerX, 2) + Math.Pow(positionEndY - playerY, 2));
-            if (distanceFromPlayer < radiusExtends) {
+            if(isPuzzleLevel) {
                 currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
+            } else {
+                if (distanceFromPlayer < radiusExtends) {
+                    currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
+                }
             }
         }
         pathHeight();
@@ -227,5 +208,39 @@ public class pathDotMovement : MonoBehaviour
         positionEndX = playerX;
         positionEndY = playerY;
         pathRotation = 0;
+    }
+
+    private void setRotation() {
+        // code for mouse creation.
+        // takes in mouse position, and sets the initial rotation based on it.
+        //if (Input.GetButtonDown("Fire1")) {
+        if (playerControls.Player.Fire.WasPressedThisFrame()) {
+
+            mousePositionActual = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 20f));
+
+            float mouseX = mousePositionActual.x;
+            float mouseY = mousePositionActual.y;
+
+            float mousePos = (mouseY - playerY) / (mouseX - playerX);
+
+            pathRotation = (float)(Mathf.Atan2((mouseY - playerY), (mouseX - playerX)) * Mathf.Rad2Deg);
+
+            //Constrained to 60 degree angles to the right and left of the player
+            if (pathRotation > creationRestraint && pathRotation < 180 - creationRestraint) {
+                if (pathRotation < 90) {
+                    pathRotation = creationRestraint;
+                } else if (pathRotation > 90) {
+                    pathRotation = 180 - creationRestraint;
+                }
+            } else if (pathRotation < -1 * creationRestraint && pathRotation > -1 * (180 - creationRestraint)) {
+                if (pathRotation < -90) {
+                    pathRotation = -1 * (180 - creationRestraint);
+                } else if (pathRotation > -90) {
+                    pathRotation = -1 * creationRestraint;
+                }
+            }
+
+            pathRotationBase = pathRotation;
+        }
     }
 }

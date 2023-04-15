@@ -6,7 +6,7 @@ using TMPro;
 public class LineEnergy : MonoBehaviour
 {
     public TMP_Text energyLabel;
-    private float energy = 100;
+    public float energy;
     private const int DRAIN_CONSTANT = 2;
 
     public bool energyDrained()
