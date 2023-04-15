@@ -35,7 +35,7 @@ public class PathCreation : MonoBehaviour
     private Boolean isPathVerticalTravel = false;
     
     private PlayerControls playerControls;
-    public Boolean isPuzzleLevel;
+    public Boolean isPuzzleLevel; //Pathing is not constrained to a certain distance if is puzzle level. In future will be changed by triggers.
 
     public GameObject battery;
     private float energyCount;
