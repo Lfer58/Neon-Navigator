@@ -31,14 +31,7 @@ public class CameraController : MonoBehaviour
         if (!cameraActivation) {
             Follow();
         } else {
-            if (trigger.direction.Equals("left") || trigger.direction.Equals("right")) {
-                transform.position = new Vector3(transform.position.x, player.transform.position.y + offset.y, transform.position.z);
-                transform.position += trigger.movement * Time.deltaTime * speed;
-            }
-            if (trigger.direction.Equals("up") || trigger.direction.Equals("down")) {
-                transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
-                transform.position += trigger.movement * Time.deltaTime * speed;
-            }
+            autoScroller();
         }
     }
 
@@ -49,6 +42,17 @@ public class CameraController : MonoBehaviour
         Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, smoothFactor * Time.deltaTime);
 
         transform.position = smoothPosition;
+    }
+
+    void autoScroller() {
+        if (trigger.direction.Equals("left") || trigger.direction.Equals("right")) {
+                transform.position = new Vector3(transform.position.x, player.transform.position.y + offset.y, transform.position.z);
+                transform.position += trigger.movement * Time.deltaTime * speed;
+            }
+            if (trigger.direction.Equals("up") || trigger.direction.Equals("down")) {
+                transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+                transform.position += trigger.movement * Time.deltaTime * speed;
+            }
     }
 
 }

@@ -24,6 +24,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        //closing doors, doesn't properly work right now because scaling isn't working properly
         while ((viewer.cameraActivation) && (door.transform.localScale.x < transform.localScale.x)) {
             door.transform.localScale += new Vector3(transform.localScale.x, 0, 0);
         }
@@ -48,8 +49,9 @@ public class CameraTrigger : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        // Allows for the camera to follow the player
+        // Allows for the camera to follow the player and destroys the trigger
         viewer.cameraActivation = false;
         movement = new Vector3(0, 0, 0);
+        Destroy(gameObject);
     }
 }
