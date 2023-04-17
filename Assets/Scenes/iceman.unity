@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 272147988}
-  energy: 100
+  energy: 300
 --- !u!222 &272147990
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -642,8 +642,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: up
   movement: {x: 0, y: 0, z: 0}
-  viewer: {fileID: 963194229}
-  speed: 3
+  cameraSpeed: 3
+  playerSpeed: 7
   door: {fileID: 332887691}
 --- !u!33 &473716338
 MeshFilter:
@@ -979,6 +979,10 @@ PrefabInstance:
     - target: {fileID: 980071003451547539, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
       propertyPath: m_Name
       value: Beanboy
+      objectReference: {fileID: 0}
+    - target: {fileID: 980071003451547539, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 980071003451547541, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
       propertyPath: m_Enabled

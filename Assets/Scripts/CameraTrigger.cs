@@ -7,8 +7,10 @@ public class CameraTrigger : MonoBehaviour
 
     public string direction;
     public Vector3 movement;
-    public CameraController viewer;
-    public float speed;
+    private CameraController viewer;
+    private PlayerController player;
+    public float cameraSpeed;
+    public float playerSpeed;
 
     public GameObject door;
 
@@ -17,6 +19,7 @@ public class CameraTrigger : MonoBehaviour
     void Start()
     {
         viewer = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void FixedUpdate() 
@@ -29,7 +32,8 @@ public class CameraTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         // Sets true so the camera then doesn't follow the player and sets the camera movement speed to what is dictated by the autoscroller segment
         viewer.cameraActivation = true;
-        viewer.speed = speed;
+        viewer.speed = cameraSpeed;
+        player.walkSpeed = playerSpeed;
 
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction.Equals("up")) {

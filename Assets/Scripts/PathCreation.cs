@@ -6,12 +6,9 @@ using UnityEngine;
 public class PathCreation : MonoBehaviour
 {
     
-    public PlayerController player;
-    
     public float playerBase;
     private float playerY;
     private float playerX;
-    private Quaternion playerRotation;
     private Boolean faceRight;
     private Vector3 mousePositionActual;
     
@@ -36,6 +33,7 @@ public class PathCreation : MonoBehaviour
     
     private PlayerControls playerControls;
     public Boolean isPuzzleLevel; //Pathing is not constrained to a certain distance if is puzzle level. In future will be changed by triggers.
+    public Boolean clearPuzzleLevel; //When player passes through an exit trigger on the puzzle level.
 
     public GameObject battery;
     private float energyCount;
@@ -44,7 +42,6 @@ public class PathCreation : MonoBehaviour
     void Start()
     {
 
-        playerRotation = player.transform.rotation;
     }
 
     private void OnEnable() {
@@ -62,9 +59,9 @@ public class PathCreation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerX = player.transform.position.x;
+        playerX = transform.position.x;
 
-        playerY = player.transform.position.y - playerBase;
+        playerY = transform.position.y - playerBase;
 
         energyCount = battery.GetComponent<LineEnergy>().energy;
 
@@ -79,7 +76,6 @@ public class PathCreation : MonoBehaviour
             setRotation();
 
             pathCreation();
-            Debug.Log(energyCount);
         } else {
             valueReset();
         }
@@ -104,8 +100,8 @@ public class PathCreation : MonoBehaviour
             // } else {
             //     pathRotation = 180;
             // }
-
-            currentPath = Instantiate(path, new Vector3(positionEndX, positionEndY, 0), playerRotation);
+            
+            currentPath = Instantiate(path, new Vector3(positionEndX, positionEndY, 0), transform.rotation);
             currentPath.transform.eulerAngles = new Vector3 (0,0, pathRotation);
             isPathCreated = true;
         }
@@ -136,7 +132,7 @@ public class PathCreation : MonoBehaviour
             } else {
                 pathRotation += rotationHeight * verticalInput * -1;
             }
-            currentPath = Instantiate(path, new Vector3(positionEndX, positionEndY, 0), playerRotation);
+            currentPath = Instantiate(path, new Vector3(positionEndX, positionEndY, 0), transform.rotation);
 
             // Rotates to the newer path rotation as defined earlier.
             currentPath.transform.eulerAngles = new Vector3 (0,0, pathRotation);
@@ -161,7 +157,7 @@ public class PathCreation : MonoBehaviour
     }
 
     private void isFaceRight() {
-        faceRight = (player.transform.eulerAngles.y != 180);
+        faceRight = (transform.eulerAngles.y != 180);
 
         // if (pathRotation > -90 )
         
