@@ -24,5 +24,7 @@ public class LineEnergy : MonoBehaviour
             energy -= (Time.fixedDeltaTime * DRAIN_CONSTANT);
         }
         // Makes theplayer lose energy if they hold down the left mouse button
+        // Needs to not be drained if the path is not being increased further or when it collides with another object
+            // The second option might not be need if we make it so that path doesn't extend further when colliding with a wall.
     } 
 }

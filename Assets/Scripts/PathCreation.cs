@@ -23,7 +23,6 @@ public class PathCreation : MonoBehaviour
     private float pathRotationBase;
     public float scaleForce;
     private int verticalInput;
-    private int horizontalDirection;
 
     private float positionEnd;
     private float positionEndX;
@@ -33,7 +32,6 @@ public class PathCreation : MonoBehaviour
     
     private PlayerControls playerControls;
     public Boolean isPuzzleLevel; //Pathing is not constrained to a certain distance if is puzzle level. In future will be changed by triggers.
-    public Boolean clearPuzzleLevel; //When player passes through an exit trigger on the puzzle level.
 
     public GameObject battery;
     private float energyCount;
@@ -125,7 +123,6 @@ public class PathCreation : MonoBehaviour
         // Only works when path is actually being created.
         //if (isPathCreated && Input.GetButtonDown("Vertical")) {
         if (isPathCreated && playerControls.Player.PathMovement.WasPressedThisFrame()) {
-            isFaceRight();
             setVerticalInput();
             if (pathRotation < 90 || pathRotation > 270) {
                 pathRotation += rotationHeight * verticalInput;
@@ -162,11 +159,6 @@ public class PathCreation : MonoBehaviour
         // if (pathRotation > -90 )
         
         // Code for straightline creation.
-        if (faceRight) {
-            horizontalDirection = 1;
-        } else {
-            horizontalDirection = -1;
-        }
     }
 
     private void createPathPositions() {
@@ -187,10 +179,9 @@ public class PathCreation : MonoBehaviour
                 // setVerticalInput();
 
                 positionEndY = (float)(positionEnd * Math.Abs(Math.Sin(pathRotation * Mathf.Deg2Rad))) * verticalInput + currentPath.transform.position.y;
-                isFaceRight();
                 positionEndX = (float)(positionEnd * Math.Cos(pathRotation * Mathf.Deg2Rad)) + currentPath.transform.position.x;
             } else {
-                positionEndX = positionEnd * horizontalDirection + currentPath.transform.position.x;
+                positionEndX = currentPath.transform.position.x;
                 positionEndY = currentPath.transform.position.y;
             }
         }
@@ -221,18 +212,22 @@ public class PathCreation : MonoBehaviour
 
             pathRotation = (float)(Mathf.Atan2((mouseY - playerY), (mouseX - playerX)) * Mathf.Rad2Deg);
 
-            //Constrained to 60 degree angles to the right and left of the player
-            if (pathRotation > creationRestraint && pathRotation < 180 - creationRestraint) {
-                if (pathRotation < 90) {
-                    pathRotation = creationRestraint;
-                } else if (pathRotation > 90) {
-                    pathRotation = 180 - creationRestraint;
-                }
-            } else if (pathRotation < -1 * creationRestraint && pathRotation > -1 * (180 - creationRestraint)) {
-                if (pathRotation < -90) {
-                    pathRotation = -1 * (180 - creationRestraint);
-                } else if (pathRotation > -90) {
-                    pathRotation = -1 * creationRestraint;
+            //Constrained to 30 to -30 degree angles to the right and left of the player, currently only apply for puzzle levels
+            //Think about adjusting this becausee player is heavily affected at high enough angles
+            // So might still need constraints for the puzzle levels albeit higher.
+            if (!isPuzzleLevel) {
+                if (pathRotation > creationRestraint && pathRotation < 180 - creationRestraint) {
+                    if (pathRotation < 90) {
+                        pathRotation = creationRestraint;
+                    } else if (pathRotation > 90) {
+                        pathRotation = 180 - creationRestraint;
+                    }
+                } else if (pathRotation < -1 * creationRestraint && pathRotation > -1 * (180 - creationRestraint)) {
+                    if (pathRotation < -90) {
+                        pathRotation = -1 * (180 - creationRestraint);
+                    } else if (pathRotation > -90) {
+                        pathRotation = -1 * creationRestraint;
+                    }
                 }
             }
 
