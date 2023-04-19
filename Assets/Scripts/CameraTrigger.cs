@@ -9,10 +9,12 @@ public class CameraTrigger : MonoBehaviour
     public Vector3 movement;
     private CameraController viewer;
     private PlayerController player;
+    private SpawnPoint spawn;
     public float cameraSpeed;
     public float playerSpeed;
+    public float deadHeight; //Sets how far/up the camera can be of the player before death
 
-    public GameObject door;
+    // public GameObject door;
 
 
     // Start is called before the first frame update
@@ -20,14 +22,15 @@ public class CameraTrigger : MonoBehaviour
     {
         viewer = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        spawn = GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>();
     }
 
     private void FixedUpdate() 
     {
         //closing doors, doesn't properly work right now because scaling isn't working properly
-        while ((viewer.cameraActivation) && (door.transform.localScale.x < transform.localScale.x)) {
-            door.transform.localScale += new Vector3(transform.localScale.x, 0, 0);
-        }
+        // while ((viewer.cameraActivation) && (door.transform.localScale.x < transform.localScale.x)) {
+        //     door.transform.localScale += new Vector3(transform.localScale.x, 0, 0);
+        // }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -35,6 +38,7 @@ public class CameraTrigger : MonoBehaviour
         viewer.cameraActivation = true;
         viewer.speed = cameraSpeed;
         player.walkSpeed = playerSpeed;
+        spawn.deadHeight = deadHeight;
 
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction.Equals("up")) {
