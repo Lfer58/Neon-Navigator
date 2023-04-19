@@ -9,7 +9,8 @@ public class PathCreation : MonoBehaviour
     public float playerBase;
     private float playerY;
     private float playerX;
-    private Boolean faceRight;
+    private Rigidbody playerRigidBody;
+    private bool faceRight;
     private Vector3 mousePositionActual;
     
     public float radiusExtends;
@@ -27,19 +28,21 @@ public class PathCreation : MonoBehaviour
     private float positionEnd;
     private float positionEndX;
     private float positionEndY;
-    private Boolean isPathCreated = false;
-    private Boolean isPathVerticalTravel = false;
+    private bool isPathCreated = false;
+    private bool isPathVerticalTravel = false;
     
     private PlayerControls playerControls;
-    public Boolean isPuzzleLevel; //Pathing is not constrained to a certain distance if is puzzle level. In future will be changed by triggers.
+    public bool isPuzzleLevel; //Pathing is not constrained to a certain distance if is puzzle level. In future will be changed by triggers.
 
-    public GameObject battery;
+    public LineEnergy battery;
     private float energyCount;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        battery = GameObject.FindGameObjectWithTag("EnergyCount").GetComponent<LineEnergy>();
+        playerRigidBody = GetComponent<Rigidbody>();
     }
 
     private void OnEnable() {
@@ -61,7 +64,7 @@ public class PathCreation : MonoBehaviour
 
         playerY = transform.position.y - playerBase;
 
-        energyCount = battery.GetComponent<LineEnergy>().energy;
+        energyCount = battery.energy;
 
         if (energyCount >= 0) {
             createPathPositions();
@@ -114,6 +117,9 @@ public class PathCreation : MonoBehaviour
             } else {
                 if (distanceFromPlayer < radiusExtends) {
                     currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
+                    battery.isPathCreating = true;
+                } else {
+                    battery.isPathCreating = false;
                 }
             }
         }

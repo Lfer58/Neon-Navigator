@@ -14,7 +14,7 @@ public class CameraTrigger : MonoBehaviour
     public float playerSpeed;
     public float deadHeight; //Sets how far/up the camera can be of the player before death
 
-    public GameObject door;
+    // public GameObject door;
 
 
     // Start is called before the first frame update
@@ -28,9 +28,9 @@ public class CameraTrigger : MonoBehaviour
     private void FixedUpdate() 
     {
         //closing doors, doesn't properly work right now because scaling isn't working properly
-        while ((viewer.cameraActivation) && (door.transform.localScale.x < transform.localScale.x)) {
-            door.transform.localScale += new Vector3(transform.localScale.x, 0, 0);
-        }
+        // while ((viewer.cameraActivation) && (door.transform.localScale.x < transform.localScale.x)) {
+        //     door.transform.localScale += new Vector3(transform.localScale.x, 0, 0);
+        // }
     }
 
     private void OnTriggerEnter(Collider other) {
