@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Line
+  - CameraTrigger
+  - EnergyCount
   layers:
   - Default
   - TransparentFX
