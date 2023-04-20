@@ -30,16 +30,19 @@ public class SpawnPoint : MonoBehaviour
                 transform.position = respawnPoint;
                 viewer.transform.position = respawnPoint;
                 resetSpeeds();
+                resetPath();
             }
             if(transform.position.x < viewer.transform.position.x + deadHeight){
                 transform.position = respawnPoint;
                 viewer.transform.position = respawnPoint;
                 resetSpeeds();
+                resetPath();
             }
         } else {
             if(transform.position.y < deadHeight){
                 transform.position = respawnPoint;
                 resetSpeeds();
+                resetPath();
             }
         }
     }
@@ -47,5 +50,11 @@ public class SpawnPoint : MonoBehaviour
     public void resetSpeeds() { // speed resets from trigger.
         viewer.speed = cameraSpeedBase;
         player.walkSpeed = playerSpeedBase;
+    }
+
+    public void resetPath() { // delete all instances of created paths
+        foreach (GameObject o in GameObject.FindGameObjectsWithTag("Path")) {
+            Destroy(o);
+        }
     }
 }

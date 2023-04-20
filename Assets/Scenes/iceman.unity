@@ -638,8 +638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: up
   movement: {x: 0, y: 0, z: 0}
-  cameraSpeed: 10
-  playerSpeed: 30
+  cameraSpeed: 3
+  playerSpeed: 5
   deadHeight: -12.5
 --- !u!33 &473716338
 MeshFilter:
