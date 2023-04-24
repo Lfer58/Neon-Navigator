@@ -5,13 +5,14 @@ using UnityEngine;
 public class CameraTrigger : MonoBehaviour
 {
 
-    public string direction;
+    public enum Orientation{ Left, Right, Up, Down }
+    public Orientation direction;
     public Vector3 movement;
     private CameraController viewer;
     private PlayerController player;
     private SpawnPoint spawn;
-    public float cameraSpeed;
-    public float playerSpeed;
+    public float cameraSpeed = 1;
+    public float playerSpeed = 5;
     public float deadHeight; //Sets how far/up the camera can be of the player before death
 
     // public GameObject door;
@@ -41,13 +42,13 @@ public class CameraTrigger : MonoBehaviour
         spawn.deadHeight = deadHeight;
 
         // Depending on direction set on the created object, creates a vector for that direction
-        if (direction.Equals("up")) {
+        if (direction == Orientation.Up) {
             movement = new Vector3(0, 1, 0);
-        } else if (direction.Equals("down")) {
+        } else if (direction == Orientation.Down) {
             movement = new Vector3(0, -1, 0);
-        } else if (direction.Equals("right")) {
+        } else if (direction == Orientation.Right) {
             movement = new Vector3(1, 0, 0);
-        } else if (direction.Equals("left")) {
+        } else if (direction == Orientation.Left) {
             movement = new Vector3(-1, 0, 0);
         }
     }

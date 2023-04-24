@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023c614f6249c4a37b13afe7c54650ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: up
+  direction: 2
   movement: {x: 0, y: 0, z: 0}
   cameraSpeed: 3
   playerSpeed: 5

@@ -45,11 +45,11 @@ public class CameraController : MonoBehaviour
     }
 
     void autoScroller() {
-        if (trigger.direction.Equals("left") || trigger.direction.Equals("right")) {
+        if (trigger.direction == CameraTrigger.Orientation.Left || trigger.direction == CameraTrigger.Orientation.Right) {
                 transform.position = new Vector3(transform.position.x, player.transform.position.y + offset.y, transform.position.z);
                 transform.position += trigger.movement * Time.deltaTime * speed;
             }
-            if (trigger.direction.Equals("up") || trigger.direction.Equals("down")) {
+            if (trigger.direction == CameraTrigger.Orientation.Up || trigger.direction == CameraTrigger.Orientation.Down) {
                 transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
                 transform.position += trigger.movement * Time.deltaTime * speed;
             }
