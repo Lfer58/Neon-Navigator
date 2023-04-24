@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 272147988}
   m_Layer: 5
   m_Name: Energy
-  m_TagString: Untagged
+  m_TagString: EnergyCount
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -567,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 272147988}
   energy: 300
+  isPathCreating: 1
 --- !u!222 &272147990
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -638,9 +639,8 @@ MonoBehaviour:
   direction: up
   movement: {x: 0, y: 0, z: 0}
   cameraSpeed: 3
-  playerSpeed: 7
+  playerSpeed: 5
   deadHeight: -12.5
-  door: {fileID: 0}
 --- !u!33 &473716338
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -950,7 +950,6 @@ MonoBehaviour:
   rotationHeight: 30
   creationRestraint: 30
   path: {fileID: 7826154401641725583, guid: 545ce0a7d1fca444ba228824120bc1b1, type: 3}
-  scaleForce: 10
   isPuzzleLevel: 0
   battery: {fileID: 272147986}
 --- !u!114 &2004374003
@@ -966,7 +965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {x: 0, y: 0, z: 0}
-  deadHeight: -2
+  deadHeight: -20
+  playerSpeedBase: 0
+  cameraSpeedBase: 0
 --- !u!1001 &980071005208415857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1057,7 +1058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6822764445364312432, guid: 9b71d652c2c6546f78561f80056b95b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.09
+      value: -2.37
       objectReference: {fileID: 0}
     - target: {fileID: 6822764445364312432, guid: 9b71d652c2c6546f78561f80056b95b0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1093,6 +1094,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6822764445364312432, guid: 9b71d652c2c6546f78561f80056b95b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6822764445364312433, guid: 9b71d652c2c6546f78561f80056b95b0, type: 3}
+      propertyPath: isPuzzleLevel
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6822764445364312439, guid: 9b71d652c2c6546f78561f80056b95b0, type: 3}

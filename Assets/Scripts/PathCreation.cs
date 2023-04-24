@@ -10,6 +10,7 @@ public class PathCreation : MonoBehaviour
     private float playerY;
     private float playerX;
     private Rigidbody playerRigidBody;
+    private PlayerController player;
     private bool faceRight;
     private Vector3 mousePositionActual;
     
@@ -22,7 +23,7 @@ public class PathCreation : MonoBehaviour
     private GameObject currentPath; //path instance being generated
     private float pathRotation; // How much the path rotates before extending.
     private float pathRotationBase;
-    public float scaleForce;
+    private float scaleForce;
     private int verticalInput;
 
     private float positionEnd;
@@ -42,13 +43,13 @@ public class PathCreation : MonoBehaviour
     void Start()
     {
         battery = GameObject.FindGameObjectWithTag("EnergyCount").GetComponent<LineEnergy>();
-        playerRigidBody = GetComponent<Rigidbody>();
+        player = GetComponent<PlayerController>();
     }
 
     private void OnEnable() {
         if(playerControls == null){
             playerControls = new PlayerControls();
-
+            
         }
         playerControls.Enable();
     }
@@ -60,6 +61,8 @@ public class PathCreation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scaleForce = player.walkSpeed * 2;
+        
         playerX = transform.position.x;
 
         playerY = transform.position.y - playerBase;
@@ -112,7 +115,9 @@ public class PathCreation : MonoBehaviour
         if (isPathCreated) {
             // Calculates distance from the base player position so that the path only extends outward to a distance specificied by radiusExtends.
             distanceFromPlayer = (float)Math.Sqrt(Math.Pow(positionEndX - playerX, 2) + Math.Pow(positionEndY - playerY, 2));
-            if(isPuzzleLevel) {
+            if(isPuzzleLevel) { // Either freeze the character while creating the path, require the player to be stopped, or scrap it and allow movement.
+                                // Most important thing that currently needs to be worked upon is how to create the detachment between player and path for the more
+                                // elevated creation.
                 currentPath.transform.localScale += new Vector3(Time.deltaTime * scaleForce, 0, 0); //Increases the path in the direction of mouse.
             } else {
                 if (distanceFromPlayer < radiusExtends) {

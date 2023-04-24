@@ -7,8 +7,11 @@ public class SpawnPoint : MonoBehaviour
     // A trigger object based at the start of the levels will change this value to update spawn points.
     public Vector3 respawnPoint;
     private CameraController viewer;
+    private PlayerController player;
     private PathCreation path;
     public float deadHeight = -2;
+    public float playerSpeedBase;
+    public float cameraSpeedBase;
     
     // Start is called before the first frame update
     void Start()
@@ -16,6 +19,7 @@ public class SpawnPoint : MonoBehaviour
         respawnPoint = transform.position;
         path = GameObject.FindGameObjectWithTag("Player").GetComponent<PathCreation>();
         viewer = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -23,21 +27,34 @@ public class SpawnPoint : MonoBehaviour
     {
         if (!path.isPuzzleLevel) {
             if(transform.position.y < viewer.transform.position.y + deadHeight){
-                Debug.Log(transform.position);
-                Debug.Log(viewer.transform.position);
                 transform.position = respawnPoint;
                 viewer.transform.position = respawnPoint;
+                resetSpeeds();
+                resetPath();
             }
             if(transform.position.x < viewer.transform.position.x + deadHeight){
-                Debug.Log(transform.position);
-                Debug.Log(viewer.transform.position);
                 transform.position = respawnPoint;
                 viewer.transform.position = respawnPoint;
+                resetSpeeds();
+                resetPath();
             }
         } else {
             if(transform.position.y < deadHeight){
                 transform.position = respawnPoint;
+                resetSpeeds();
+                resetPath();
             }
+        }
+    }
+
+    public void resetSpeeds() { // speed resets from trigger.
+        viewer.speed = cameraSpeedBase;
+        player.walkSpeed = playerSpeedBase;
+    }
+
+    public void resetPath() { // delete all instances of created paths
+        foreach (GameObject o in GameObject.FindGameObjectsWithTag("Path")) {
+            Destroy(o);
         }
     }
 }

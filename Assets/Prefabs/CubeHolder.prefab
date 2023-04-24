@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6100054151034935185}
   m_Layer: 6
   m_Name: CubeHolder
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598a381a31a5246708e939c256391acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadZone: -45

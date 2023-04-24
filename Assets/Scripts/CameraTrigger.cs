@@ -54,6 +54,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         // Allows for the camera to follow the player and destroys the trigger
+        spawn.resetSpeeds();
         viewer.cameraActivation = false;
         movement = new Vector3(0, 0, 0);
         Destroy(gameObject);
