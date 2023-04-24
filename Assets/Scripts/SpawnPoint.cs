@@ -10,8 +10,6 @@ public class SpawnPoint : MonoBehaviour
     private PlayerController player;
     private PathCreation path;
     public float deadHeight = -2;
-    public float playerSpeedBase;
-    public float cameraSpeedBase;
     
     // Start is called before the first frame update
     void Start()
@@ -26,7 +24,8 @@ public class SpawnPoint : MonoBehaviour
     void Update()
     {
         if (!path.isPuzzleLevel) {
-            if(transform.position.y < viewer.transform.position.y + deadHeight){
+            if(transform.position.y < viewer.transform.position.y + deadHeight){ // Always make sure that dead heights in camera triggers are appropriate to not mess
+                                                                                    // this up.
                 transform.position = respawnPoint;
                 viewer.transform.position = respawnPoint;
                 resetSpeeds();
@@ -48,8 +47,8 @@ public class SpawnPoint : MonoBehaviour
     }
 
     public void resetSpeeds() { // speed resets from trigger.
-        viewer.speed = cameraSpeedBase;
-        player.walkSpeed = playerSpeedBase;
+        viewer.speed = 3;
+        player.walkSpeed = 5;
     }
 
     public void resetPath() { // delete all instances of created paths

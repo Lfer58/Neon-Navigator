@@ -36,6 +36,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         // Sets true so the camera then doesn't follow the player and sets the camera movement speed to what is dictated by the autoscroller segment
+        viewer.trigger = this;
         viewer.cameraActivation = true;
         viewer.speed = cameraSpeed;
         player.walkSpeed = playerSpeed;
