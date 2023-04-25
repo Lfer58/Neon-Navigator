@@ -8,6 +8,7 @@ public class MovingPlatform : MonoBehaviour
     private Vector3 movement;
     public float distance;
     public float speed = 1;
+    public float secondarySpeed = -1;
     private Vector3 basePosition;
     private float platformX;
     private float platformY;
@@ -15,11 +16,18 @@ public class MovingPlatform : MonoBehaviour
     public enum Orientation{ Left, Right, Up, Down }
     public Orientation direction;
     private bool resetToBase = false;
+    public float delay;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
         basePosition = transform.position;
+        timer = 0;
+        
+        if (secondarySpeed == -1) { //sets secondary speed to speed, as a way to naturalize speeds if wanted same speeds.
+            secondarySpeed = speed;
+        }
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction == Orientation.Up) {
             movement = new Vector3(0, 1, 0);
@@ -48,52 +56,62 @@ public class MovingPlatform : MonoBehaviour
     public void moving() {
         if (direction == Orientation.Up) {
             if (platformY < destinationPosition.y && !resetToBase) {
-                move(true);
+                move(true, speed);
             } else {
                 resetToBase = true;
             }
             if (resetToBase && platformY > basePosition.y) {
-                move(false);
+                timing(false, secondarySpeed);
             } else {
                 resetToBase = false;
             }
         } else if (direction == Orientation.Down) {
             if (platformY > destinationPosition.y && !resetToBase) {
-                move(true);
+                move(true, speed);
             } else {
                 resetToBase = true;
             }
             if (resetToBase && platformY < basePosition.y) {
-                move(false);
+                timing(false, secondarySpeed);
             } else {
                 resetToBase = false;
             }
         } else if (direction == Orientation.Right) {
             if (platformX < destinationPosition.x && !resetToBase) {
-                move(true);
+                move(true, speed);
             } else {
                 resetToBase = true;
             }
             if (resetToBase && platformX > basePosition.x) {
-                move(false);
+                timing(false, secondarySpeed);
             } else {
                 resetToBase = false;
+                timer = 0;
             }
         } else if (direction == Orientation.Left) {
             if (platformX > destinationPosition.x && !resetToBase) {
-                move(true);
+                move(true, speed);
             } else {
                 resetToBase = true;
             }
             if (resetToBase && platformX < basePosition.x) {
-                move(false);
+                timing(false, secondarySpeed);
             } else {
                 resetToBase = false;
             }
         }
     }
 
-    public void move(bool isPositive) {
+    public void move(bool isPositive, float speed) {
         transform.position += movement * Time.deltaTime * speed * (isPositive ? 1 : -1);
+    }
+
+    public void timing(bool isPositive, float speed) {
+        if (timer < delay) {
+            timer += Time.deltaTime;
+        } else {
+            timer = delay + 1;
+            move(isPositive, speed);
+        }
     }
 }
