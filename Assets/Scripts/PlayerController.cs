@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         Vector3 rayCastorigin = transform.position;
         if(Physics.SphereCast(rayCastorigin, 0.2f, Vector3.down, out hit, playerHeight * 0.5f, whatIsGround)){
             grounded = true;
-        }else{
+        } else {
             grounded = false;
         }
 
@@ -109,10 +109,10 @@ public class PlayerController : MonoBehaviour
             ResetJump();
         }
 
-        if (dashPress)
-        {
-            Dash();
-        }
+        // if (dashPress)
+        // {
+        //     Dash();
+        // }
     }
 
     void MovementInput()
@@ -182,20 +182,20 @@ public class PlayerController : MonoBehaviour
         currentJumpAmount = jumpAmount;
     }
 
-    void DashInput()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            dashPress = true;
-        }
-    }
+    // void DashInput()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.LeftShift))
+    //     {
+    //         dashPress = true;
+    //     }
+    // }
 
-    void Dash()
-    {
-        dashPress = false;
+    // void Dash()
+    // {
+    //     dashPress = false;
 
-        rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
+    //     rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
 
-        rb.AddForce(transform.right * moveInput * dashForce, ForceMode.Impulse);
-    }
+    //     rb.AddForce(transform.right * moveInput * dashForce, ForceMode.Impulse);
+    // }
 }

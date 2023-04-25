@@ -58,7 +58,8 @@ public class CameraTrigger : MonoBehaviour
         // Allows for the camera to follow the player and destroys the trigger
         spawn.resetSpeeds();
         viewer.cameraActivation = false;
+        spawn.deadHeight = -10;
         movement = new Vector3(0, 0, 0);
-        Destroy(gameObject);
+        viewer.trigger = null;
     }
 }
