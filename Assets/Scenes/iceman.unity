@@ -3097,6 +3097,10 @@ PrefabInstance:
       propertyPath: jumpAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 980071003451547545, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
+      propertyPath: additionalGravity
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
 --- !u!1001 &6822764445456289868

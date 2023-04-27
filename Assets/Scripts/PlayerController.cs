@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Walk Speed of player")]
     public float walkSpeed;
+    public float additionalGravity;
     //Private var - input of movement
     private float moveInput;
     private Vector2 movementInput;
@@ -107,6 +108,10 @@ public class PlayerController : MonoBehaviour
         if (grounded && rb.velocity.y < 0)
         {
             ResetJump();
+        }
+
+        if (rb.velocity.y < 0) {
+            rb.velocity -= new Vector3(0, 1, 0) * Time.deltaTime * additionalGravity;
         }
 
         // if (dashPress)
