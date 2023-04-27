@@ -2810,6 +2810,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {x: 0, y: 0, z: 0}
   deadHeight: -10
+  constantDeadHeight: -10
+  isConstantApplicable: 1
   baseWalkSpeed: 10
   baseCameraSpeed: 6
   isReseted: 0

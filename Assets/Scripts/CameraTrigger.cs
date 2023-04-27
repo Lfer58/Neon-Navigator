@@ -41,6 +41,7 @@ public class CameraTrigger : MonoBehaviour
         viewer.speed = cameraSpeed;
         player.walkSpeed = playerSpeed;
         spawn.deadHeight = deadHeight;
+        spawn.isConstantApplicable = false;
 
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction == Orientation.Up) {
@@ -56,6 +57,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         // Allows for the camera to follow the player and destroys the trigger
+        spawn.isConstantApplicable = true;
         spawn.resetSpeeds();
         viewer.cameraActivation = false;
         spawn.deadHeight = -10;

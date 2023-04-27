@@ -9,7 +9,9 @@ public class SpawnPoint : MonoBehaviour
     private CameraController viewer;
     private PlayerController player;
     private PathCreation path;
-    public float deadHeight = -2;
+    public float deadHeight;
+    public float constantDeadHeight; //Can't be manipulated by any other class, and seeks to exists as a hard floor for death.
+    public bool isConstantApplicable = true; //Flexibility of height is still maintained within movement levels
     public float baseWalkSpeed;
     public float baseCameraSpeed;
     public bool isReseted = false;
@@ -32,27 +34,22 @@ public class SpawnPoint : MonoBehaviour
         if (!path.isPuzzleLevel) {
             if(transform.position.y < viewer.transform.position.y + deadHeight){ // Always make sure that dead heights in camera triggers are appropriate to not mess
                                                                                     // this up.
-                transform.position = respawnPoint;
-                viewer.transform.position = respawnPoint;
-                resetSpeeds();
-                resetPath();
-                battery.energy = baseEnergy;
+                death();
             }
             if(transform.position.x < viewer.transform.position.x + deadHeight){
-                transform.position = respawnPoint;
-                viewer.transform.position = respawnPoint;
-                resetSpeeds();
-                resetPath();
-                battery.energy = baseEnergy;
+                death();
             }
         } else {
             if(transform.position.y < deadHeight){
-                transform.position = respawnPoint;
-                resetSpeeds();
-                resetPath();
-                battery.energy = baseEnergy;
+                death();
             }
         }
+
+        if (transform.position.y < constantDeadHeight && isConstantApplicable) {
+            death();
+        }
+
+        
     }
 
     public void resetSpeeds() { // speed resets from trigger.
@@ -64,5 +61,13 @@ public class SpawnPoint : MonoBehaviour
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("Path")) {
             Destroy(o);
         }
+    }
+
+    private void death () {
+        transform.position = respawnPoint;
+            viewer.transform.position = respawnPoint;
+            resetSpeeds();
+            resetPath();
+            battery.energy = baseEnergy;
     }
 }

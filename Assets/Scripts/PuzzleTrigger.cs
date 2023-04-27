@@ -30,6 +30,6 @@ public class PuzzleTrigger : MonoBehaviour
         spawn.respawnPoint = transform.position; // respawn point update to the start of new chambers.
         path.isPuzzleLevel = isPuzzleLevel; //sets if puzzle level or not.
         spawn.baseEnergy = battery.energy;
-        Destroy(this);
+        Destroy(this); //Destroys object so energy can't be changed later
     }
 }
