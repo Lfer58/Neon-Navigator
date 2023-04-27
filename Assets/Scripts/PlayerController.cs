@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
             ResetJump();
         }
 
-        if (rb.velocity.y < 0) {
+        if (rb.velocity.y < 0 || !grounded) {
             rb.velocity -= new Vector3(0, 1, 0) * Time.deltaTime * additionalGravity;
         }
 

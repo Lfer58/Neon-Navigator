@@ -225,7 +225,7 @@ public class PathCreation : MonoBehaviour
 
             //Constrained to 30 to -30 degree angles to the right and left of the player, currently only apply for puzzle levels
             //Think about adjusting this becausee player is heavily affected at high enough angles
-            // So might still need constraints for the puzzle levels albeit higher.
+            // So might still need constraints for the puzzle levels albeit higher. Puzzle trigger to modify this.
             if (!isPuzzleLevel) {
                 if (pathRotation > creationRestraint && pathRotation < 180 - creationRestraint) {
                     if (pathRotation < 90) {
