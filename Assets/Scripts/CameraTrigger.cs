@@ -45,13 +45,13 @@ public class CameraTrigger : MonoBehaviour
 
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction == Orientation.Up) {
-            movement = new Vector3(0, 1, 0);
+            movement = Vector3.up;
         } else if (direction == Orientation.Down) {
-            movement = new Vector3(0, -1, 0);
+            movement = Vector3.down;
         } else if (direction == Orientation.Right) {
-            movement = new Vector3(1, 0, 0);
+            movement = Vector3.right;
         } else if (direction == Orientation.Left) {
-            movement = new Vector3(-1, 0, 0);
+            movement = Vector3.left;
         }
     }
 
@@ -61,7 +61,7 @@ public class CameraTrigger : MonoBehaviour
         spawn.resetSpeeds();
         viewer.cameraActivation = false;
         spawn.deadHeight = -10;
-        movement = new Vector3(0, 0, 0);
+        movement = Vector3.zero;
         viewer.trigger = null;
     }
 }

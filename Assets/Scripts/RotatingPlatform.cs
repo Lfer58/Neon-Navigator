@@ -18,11 +18,11 @@ public class RotatingPlatform : MonoBehaviour
     void Update()
     {
         if (axis == Orientation.X) {
-            transform.eulerAngles += new Vector3 (1,0,0) * rotationSpeed * Time.deltaTime;
+            transform.eulerAngles += Vector3.right * rotationSpeed * Time.deltaTime;
         } else if (axis == Orientation.Y) {
-            transform.eulerAngles += new Vector3 (0,1,0) * rotationSpeed * Time.deltaTime;
+            transform.eulerAngles += Vector3.up * rotationSpeed * Time.deltaTime;
         } else if (axis == Orientation.Z) {
-            transform.eulerAngles += new Vector3 (0,0,1) * rotationSpeed * Time.deltaTime;
+            transform.eulerAngles += Vector3.forward * rotationSpeed * Time.deltaTime;
         }
     }
 }

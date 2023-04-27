@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (rb.velocity.y < 0 || !grounded) {
-            rb.velocity -= new Vector3(0, 1, 0) * Time.deltaTime * additionalGravity;
+            rb.velocity -= Vector3.up * Time.deltaTime * additionalGravity;
         }
 
         // if (dashPress)

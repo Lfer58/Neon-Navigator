@@ -30,16 +30,16 @@ public class MovingPlatform : MonoBehaviour
         }
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction == Orientation.Up) {
-            movement = new Vector3(0, 1, 0);
+            movement = Vector3.up;
             destinationPosition = new Vector3(basePosition.x, basePosition.y +  distance, 0);
         } else if (direction == Orientation.Down) {
-            movement = new Vector3(0, -1, 0);
+            movement = Vector3.down;
             destinationPosition = new Vector3(basePosition.x, basePosition.y - distance, 0);
         } else if (direction == Orientation.Right) {
-            movement = new Vector3(1, 0, 0);
+            movement = Vector3.right;
             destinationPosition = new Vector3(basePosition.x + distance, basePosition.y, 0);
         } else if (direction == Orientation.Left) {
-            movement = new Vector3(-1, 0, 0);
+            movement = Vector3.left;
             destinationPosition = new Vector3(basePosition.x - distance, basePosition.y, 0);
         }
     }
