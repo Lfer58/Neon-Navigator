@@ -64,6 +64,7 @@ public class MovingPlatform : MonoBehaviour
                 timing(false, secondarySpeed);
             } else {
                 resetToBase = false;
+                timer = 0;
             }
         } else if (direction == Orientation.Down) {
             if (platformY > destinationPosition.y && !resetToBase) {
@@ -75,6 +76,7 @@ public class MovingPlatform : MonoBehaviour
                 timing(false, secondarySpeed);
             } else {
                 resetToBase = false;
+                timer = 0;
             }
         } else if (direction == Orientation.Right) {
             if (platformX < destinationPosition.x && !resetToBase) {
@@ -98,6 +100,7 @@ public class MovingPlatform : MonoBehaviour
                 timing(false, secondarySpeed);
             } else {
                 resetToBase = false;
+                timer = 0;
             }
         }
     }
