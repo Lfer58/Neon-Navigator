@@ -41,7 +41,6 @@ public class SpikePlatform : MonoBehaviour
 
     private void Start(){
         startPosZ = spike.transform.localScale.z;
-        lineEnergy = Camera.main.GetComponent<LineEnergy>();
     }
     private void Update(){
 
