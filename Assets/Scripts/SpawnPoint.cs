@@ -63,7 +63,7 @@ public class SpawnPoint : MonoBehaviour
         }
     }
 
-    private void death () {
+    public void death () {
         transform.position = respawnPoint;
             viewer.transform.position = respawnPoint;
             resetSpeeds();
