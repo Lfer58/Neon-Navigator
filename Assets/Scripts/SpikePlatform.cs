@@ -12,7 +12,7 @@ public class SpikePlatform : MonoBehaviour
     public Transform point1;
     public Transform point2;
     private float startPosZ;
-    private LineEnergy lineEnergy;
+    private LineEnergy script;
 
     int direction = 1;
 
@@ -35,8 +35,9 @@ public class SpikePlatform : MonoBehaviour
     }
 
     // Tried to Remove Energy
-    private void OnTriggerEnter(Collider Player){
-        lineEnergy.energy -= 10;
+    private void OnTriggerEnter3D(Collider Player){
+        Debug.Log("Triggered");
+        script.energy -= 50;
     }
 
     private void Start(){
@@ -64,7 +65,7 @@ public class SpikePlatform : MonoBehaviour
         spike.transform.localScale = newSpikeScale;
 
         // Changes the direction of y growth
-        if (newSpikeScale.z >= (startPosZ + 40) || newSpikeScale.z <= (startPosZ)){
+        if (newSpikeScale.z >= (startPosZ + 80) || newSpikeScale.z <= (startPosZ)){
             spikeSpeed *= -1;
         }
         
