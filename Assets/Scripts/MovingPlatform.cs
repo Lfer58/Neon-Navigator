@@ -18,6 +18,7 @@ public class MovingPlatform : MonoBehaviour
     private bool resetToBase = false;
     public float delay;
     private float timer;
+    public bool moveBack = true;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +58,7 @@ public class MovingPlatform : MonoBehaviour
         if (direction == Orientation.Up) {
             if (platformY < destinationPosition.y && !resetToBase) {
                 move(true, speed);
-            } else {
+            } else if (moveBack) {
                 resetToBase = true;
             }
             if (resetToBase && platformY > basePosition.y) {
@@ -69,7 +70,7 @@ public class MovingPlatform : MonoBehaviour
         } else if (direction == Orientation.Down) {
             if (platformY > destinationPosition.y && !resetToBase) {
                 move(true, speed);
-            } else {
+            } else if (moveBack) {
                 resetToBase = true;
             }
             if (resetToBase && platformY < basePosition.y) {
@@ -81,7 +82,7 @@ public class MovingPlatform : MonoBehaviour
         } else if (direction == Orientation.Right) {
             if (platformX < destinationPosition.x && !resetToBase) {
                 move(true, speed);
-            } else {
+            } else if (moveBack) {
                 resetToBase = true;
             }
             if (resetToBase && platformX > basePosition.x) {
@@ -93,7 +94,7 @@ public class MovingPlatform : MonoBehaviour
         } else if (direction == Orientation.Left) {
             if (platformX > destinationPosition.x && !resetToBase) {
                 move(true, speed);
-            } else {
+            } else if (moveBack) {
                 resetToBase = true;
             }
             if (resetToBase && platformX < basePosition.x) {
