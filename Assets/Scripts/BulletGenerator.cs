@@ -7,7 +7,9 @@ public class BulletGenerator : MonoBehaviour
     private const float XOffset = 0.5f;
     private const float YOffset = 1.5f;
     private const float ZOffset = 2.35f;
-    private const float timeBetweenShots = 0.5f;
+
+    [SerializeField]
+    private float timeBetweenShots = 0.5f;
 
     private float timeSinceLastShot = 0.0f;
     private Transform turret;

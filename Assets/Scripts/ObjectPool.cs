@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField]
     private GameObject objectToPool;
 
-    private int amountToPool = 7;
+    private int amountToPool = 20;
 
     void Awake()
     {

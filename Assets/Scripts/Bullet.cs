@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private const float SPEED = 12f;
-    private const float MAX_HEIGHT = 25f;
+    private const float MAX_HEIGHT = 50f;
     private const float BULLET_DAMAGE = 50f;
     private LineEnergy lineEnergy;
 
@@ -17,7 +17,6 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(lineEnergy.getEnergy());
         if (gameObject.activeInHierarchy)
         {
             if (transform.position.y > MAX_HEIGHT)
@@ -32,5 +31,6 @@ public class Bullet : MonoBehaviour
     }
 
     // private void OnTriggerEnter3D(Collider Player){
-    // }
+        
+    
 }
