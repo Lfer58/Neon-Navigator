@@ -15,9 +15,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3797256543897852191, guid: 4b279eb87390542fe891da28477371c8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92b3aa099ecb9483381c91aba9894aad, type: 2}
     - target: {fileID: 6949403962012289557, guid: 4b279eb87390542fe891da28477371c8, type: 3}
       propertyPath: m_Name
-      value: Laser Rotation
+      value: Laser Rotation Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6949403962012289558, guid: 4b279eb87390542fe891da28477371c8, type: 3}
       propertyPath: m_RootOrder
