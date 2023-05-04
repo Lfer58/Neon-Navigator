@@ -34,8 +34,6 @@ public class SpawnPoint : MonoBehaviour
         if (!path.isPuzzleLevel) {
             if(transform.position.y < viewer.transform.position.y + deadHeight  && !isConstantApplicable){ 
                 // Always make sure that dead heights in camera triggers are appropriate to not mess this up.
-                Debug.Log(transform.position.y);
-                Debug.Log(viewer.transform.position.y + deadHeight);
                 death();
             }
             if(transform.position.x < viewer.transform.position.x + deadHeight  && !isConstantApplicable){
