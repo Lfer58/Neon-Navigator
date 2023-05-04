@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/iceman.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/iceman 1.unity
+    guid: df4621fa08dcb475b8f0e0f599e8da94
+  - enabled: 1
+    path: Assets/Scenes/iceman 2.unity
+    guid: 429ec58637ca747beaf312592c6683df
+  - enabled: 1
+    path: Assets/Scenes/iceman 3.unity
+    guid: 8571bd877a98340ab894012c8a8d3f28
+  - enabled: 1
+    path: Assets/Scenes/iceman 4.unity
+    guid: c5e1ade78172f46f898b474d970a6b77
   m_configObjects: {}
