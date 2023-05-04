@@ -9636,6 +9636,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4157434317809553810, guid: c869787938ef04c45b64d183666a5961, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9207404382ea641f8aba9c120962f23e, type: 2}
     - target: {fileID: 8914989886043081775, guid: c869787938ef04c45b64d183666a5961, type: 3}
       propertyPath: m_Name
       value: Testing Lab #1

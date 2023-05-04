@@ -1674,7 +1674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417424, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417425, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_RootOrder
@@ -6736,7 +6736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6822764445364312439, guid: 9b71d652c2c6546f78561f80056b95b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b71d652c2c6546f78561f80056b95b0, type: 3}
@@ -7470,7 +7470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417424, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417425, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_RootOrder
@@ -10060,7 +10060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2191350211038276726, guid: 3610f6285920f4bdf8417821819edef3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3610f6285920f4bdf8417821819edef3, type: 3}
@@ -10543,7 +10543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417423, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: cameraSpeed
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417423, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: playerSpeed
@@ -10555,7 +10555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417424, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417425, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_RootOrder
@@ -10959,7 +10959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417424, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4583102218475417425, guid: 957b04d7935fa4ec29041ab3304d38e3, type: 3}
       propertyPath: m_RootOrder
@@ -11902,6 +11902,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4157434317809553810, guid: c869787938ef04c45b64d183666a5961, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f18dea86464524f69b3cc60db2f01026, type: 2}
     - target: {fileID: 8914989886043081775, guid: c869787938ef04c45b64d183666a5961, type: 3}
       propertyPath: m_Name
       value: Testing Lab #1
