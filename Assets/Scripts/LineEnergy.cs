@@ -9,16 +9,29 @@ public class LineEnergy : MonoBehaviour
     public float energy = 300;
     private const int DRAIN_CONSTANT = 2;
     public bool isPathCreating = true; //Set within pathCreation for when path is being created.
+    private SpawnPoint spawnPoint;
+
+    void Start()
+    {
+        spawnPoint = GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnPoint>();
+    }
+
 
     public bool energyDrained()
     {
-        return (int)energy == 0;
+        return (int)energy <= 0;
     }
 
     void Update()
     {
-        energyLabel.text = "Energy Left: " + (int)energy;
-        // Updates energyLabel Text
+        if (energyDrained())
+        {
+            spawnPoint.death();
+        }
+        // If energy is 0, player dies and is respawned at the spawn point
+
+        energyLabel.text = "Energy Left: " + ((int)energy > 0 ? (int)energy : 0);
+        // Updates energyLabel Text and caps out at 0
 
         if (Input.GetMouseButton(0) && energy > 0 && isPathCreating)
         {
