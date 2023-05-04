@@ -30,7 +30,13 @@ public class Bullet : MonoBehaviour
         // Updates the position of the bullet when it is active
     }
 
-    // private void OnTriggerEnter3D(Collider Player){
-        
-    
+    void OnTriggerEnter(Collider playerCollider)
+    {
+        if (playerCollider.gameObject.tag == "Player")
+        {
+            lineEnergy.removeEnergy(BULLET_DAMAGE);
+        }
+    }
+
+
 }

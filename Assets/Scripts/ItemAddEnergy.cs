@@ -12,12 +12,6 @@ public class ItemAddEnergy : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Delete this object when it collides with the player
     void OnTriggerEnter(Collider playerCollider)
     {
