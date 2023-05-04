@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2251748804680212073}
   - component: {fileID: 2251748804680212072}
   - component: {fileID: 2251748804680212074}
+  - component: {fileID: 706430533115746386}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -97,6 +98,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05000002, y: 0.050000012, z: 0.050000068}
   m_Center: {x: -0.02500002, y: 0.024999432, z: 0.0250007}
+--- !u!114 &706430533115746386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2251748804680212077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549c4ade68264d745af7d72c1d3cbeba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasMovingSpike: 0
+  spikeSize: 0
+  platformSpeed: 0
+  spikeSpeed: 0
+  platform: {fileID: 0}
+  spike: {fileID: 0}
+  point1: {fileID: 0}
+  point2: {fileID: 0}
 --- !u!1 &2251748805247841818
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549c4ade68264d745af7d72c1d3cbeba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasMovingSpike: 0
+  spikeSize: 0
   platformSpeed: 0.1
   spikeSpeed: 40
   platform: {fileID: 2251748806199705696}

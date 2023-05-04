@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpikePlatform : MonoBehaviour
 {
 
+    public bool hasMovingSpike;
+    public int spikeSize;
     public float platformSpeed;
     public float spikeSpeed;
     public Transform platform;
@@ -12,7 +14,8 @@ public class SpikePlatform : MonoBehaviour
     public Transform point1;
     public Transform point2;
     private float startPosZ;
-    private LineEnergy script;
+    private const float SPIKE_DAMAGE = 50f;
+    private LineEnergy lineEnergy;
 
     int direction = 1;
 
@@ -34,14 +37,21 @@ public class SpikePlatform : MonoBehaviour
         }
     }
 
-    // Tried to Remove Energy
-    private void OnTriggerEnter3D(Collider Player){
-        Debug.Log("Triggered");
-        script.energy -= 50;
+    // Tried to Removes Energy
+    void OnTriggerEnter(Collider playerCollider)
+    {
+        if (playerCollider.gameObject.tag == "Player")
+        {
+            lineEnergy.removeEnergy(SPIKE_DAMAGE);
+        }
     }
 
     private void Start(){
+        lineEnergy = GameObject.FindWithTag("EnergyCount").GetComponent<LineEnergy>();
         startPosZ = spike.transform.localScale.z;
+        if(!hasMovingSpike){
+            spike.transform.localScale = new Vector3(spike.transform.localScale.x, spike.transform.localScale.y, startPosZ+spikeSize);
+        }
     }
     private void Update(){
 
@@ -61,12 +71,14 @@ public class SpikePlatform : MonoBehaviour
         float currentX = spike.transform.localScale.x;
         float currentY = spike.transform.localScale.y;
         float currentZ = spike.transform.localScale.z;
-        Vector3 newSpikeScale = new Vector3(currentX, currentY, currentZ+spikeSpeed*Time.deltaTime);
-        spike.transform.localScale = newSpikeScale;
-
-        // Changes the direction of y growth
-        if (newSpikeScale.z >= (startPosZ + 80) || newSpikeScale.z <= (startPosZ)){
+        
+        if(hasMovingSpike){
+            Vector3 newSpikeScale = new Vector3(currentX, currentY, currentZ+spikeSpeed*Time.deltaTime);
+            spike.transform.localScale = newSpikeScale;
+            // Changes the direction of y growth
+            if (newSpikeScale.z >= (startPosZ + spikeSize) || newSpikeScale.z <= (startPosZ)){
             spikeSpeed *= -1;
+            }
         }
         
     }
