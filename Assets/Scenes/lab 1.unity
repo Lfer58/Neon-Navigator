@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 272147988}
-  energy: 300
+  energy: 50
   isPathCreating: 1
 --- !u!1001 &650614231
 PrefabInstance:
@@ -1066,7 +1066,7 @@ PrefabInstance:
       objectReference: {fileID: 794187755}
     - target: {fileID: 3316941054415377289, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
       propertyPath: baseEnergy
-      value: 300
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}

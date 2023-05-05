@@ -896,7 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 272147988}
-  energy: 300
+  energy: 100
   isPathCreating: 1
 --- !u!1 &293048135
 GameObject:

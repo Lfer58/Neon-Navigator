@@ -78,6 +78,8 @@ public class SpawnPoint : MonoBehaviour
         resetSpeeds();
         resetPath();
         battery.energy = baseEnergy;
-        music.enabled = false;
+        if (music != null) {
+            music.enabled = false;
+        }
     }
 }

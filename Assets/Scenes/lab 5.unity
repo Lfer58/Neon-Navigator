@@ -1704,7 +1704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306, y: 160}
+  m_AnchoredPosition: {x: 678, y: 422}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272147988
@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 272147988}
-  energy: 200
+  energy: 150
   isPathCreating: 1
 --- !u!1001 &280246687
 PrefabInstance:
@@ -3940,6 +3940,10 @@ PrefabInstance:
       propertyPath: music
       value: 
       objectReference: {fileID: 48734214}
+    - target: {fileID: 3316941054415377289, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
+      propertyPath: baseEnergy
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
 --- !u!1001 &1072339367
@@ -6817,7 +6821,7 @@ PrefabInstance:
     - target: {fileID: 4157434317809553810, guid: c869787938ef04c45b64d183666a5961, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9207404382ea641f8aba9c120962f23e, type: 2}
+      objectReference: {fileID: 2100000, guid: 697ba8eee9d5e4805b846f54cf239937, type: 2}
     - target: {fileID: 8914989886043081775, guid: c869787938ef04c45b64d183666a5961, type: 3}
       propertyPath: m_Name
       value: Testing Lab #1

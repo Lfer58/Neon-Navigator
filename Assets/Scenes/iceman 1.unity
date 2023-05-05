@@ -1664,7 +1664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 272147988}
-  energy: 300
+  energy: 200
   isPathCreating: 1
 --- !u!1001 &288281038
 PrefabInstance:
@@ -11103,7 +11103,7 @@ MonoBehaviour:
   constantDeadHeight: -45
   isConstantApplicable: 1
   isReseted: 0
-  baseEnergy: 0
+  baseEnergy: 200
   music: {fileID: 1065996911}
 --- !u!114 &2004374009
 MonoBehaviour:

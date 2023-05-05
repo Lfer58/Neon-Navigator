@@ -2201,7 +2201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 272147988}
-  energy: 300
+  energy: 175
   isPathCreating: 1
 --- !u!4 &281178270 stripped
 Transform:
@@ -11718,7 +11718,7 @@ MonoBehaviour:
   constantDeadHeight: -45
   isConstantApplicable: 1
   isReseted: 0
-  baseEnergy: 0
+  baseEnergy: 175
   music: {fileID: 507859254}
 --- !u!114 &2004374004
 MonoBehaviour:
