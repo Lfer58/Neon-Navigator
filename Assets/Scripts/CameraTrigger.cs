@@ -14,6 +14,7 @@ public class CameraTrigger : MonoBehaviour
     public float cameraSpeed = 1;
     public float playerSpeed = 5;
     public float deadHeight; //Sets how far/up the camera can be of the player before death
+    public AudioSource music;
 
     // public GameObject door;
 
@@ -42,6 +43,7 @@ public class CameraTrigger : MonoBehaviour
         player.walkSpeed = playerSpeed;
         spawn.deadHeight = deadHeight;
         spawn.isConstantApplicable = false;
+        music.enabled = true;
 
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction == Orientation.Up) {

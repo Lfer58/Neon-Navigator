@@ -17,6 +17,7 @@ public class SpawnPoint : MonoBehaviour
     public bool isReseted = false;
     public float baseEnergy;
     private LineEnergy battery;
+    public AudioSource music;
     
     // Start is called before the first frame update
     void Start()
@@ -72,9 +73,10 @@ public class SpawnPoint : MonoBehaviour
 
     public void death () {
         transform.position = respawnPoint;
-            viewer.transform.position = respawnPoint;
-            resetSpeeds();
-            resetPath();
-            battery.energy = baseEnergy;
+        viewer.transform.position = respawnPoint;
+        resetSpeeds();
+        resetPath();
+        battery.energy = baseEnergy;
+        music.enabled = false;
     }
 }
