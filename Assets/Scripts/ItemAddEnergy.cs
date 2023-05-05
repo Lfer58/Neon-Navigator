@@ -35,5 +35,6 @@ public class ItemAddEnergy : MonoBehaviour
         {
             lineEnergy.addEnergy(ENERGY_AMOUNT);
         }
+        Destroy(gameObject);
     }
 }

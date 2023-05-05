@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 8430042591171769688}
-  door: {fileID: 0}
+  door: {fileID: 8943113853241190150, guid: 924d431b694c6464aadccf3f1b201aa3, type: 3}
   buttonOffset: 0.1
