@@ -1637,6 +1637,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 15697670}
     m_Modifications:
+    - target: {fileID: 507735116306954845, guid: 4198e231a760d43a4aaff0e5530c620d, type: 3}
+      propertyPath: axis
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2580198129883148793, guid: 4198e231a760d43a4aaff0e5530c620d, type: 3}
       propertyPath: m_Name
       value: Saw Proper
@@ -16406,6 +16410,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 15697670}
     m_Modifications:
+    - target: {fileID: 507735116306954845, guid: 4198e231a760d43a4aaff0e5530c620d, type: 3}
+      propertyPath: axis
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2580198129883148793, guid: 4198e231a760d43a4aaff0e5530c620d, type: 3}
       propertyPath: m_Name
       value: Saw Proper (1)
