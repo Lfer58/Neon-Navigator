@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private int level;
     public void PlayGame()
     {
         //load iceman
-        SceneManager.LoadScene("template scene");
+        SceneManager.LoadScene(level);
     }
 
     public void QuitGame()

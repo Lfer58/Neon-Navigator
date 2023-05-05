@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2191350211038276621}
   - component: {fileID: 2191350211038276722}
   - component: {fileID: 2191350211038276723}
-  - component: {fileID: 2191350211038276620}
+  - component: {fileID: 2385918919204160523}
   m_Layer: 0
   m_Name: ending trigger
   m_TagString: CameraTrigger
@@ -98,7 +98,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2191350211038276726}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2191350211038276620
+--- !u!114 &2385918919204160523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2191350211038276726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e0de71570472416ab460d832d037dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: cc9c2ebc38d5991488b7a95f545d8b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadScene: iceman 1
+  level: 0

@@ -2759,6 +2759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0d445758960864caeb7c0d1dcbf2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
 --- !u!114 &1460474337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3673,6 +3674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0d445758960864caeb7c0d1dcbf2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
 --- !u!224 &1974417760
 RectTransform:
   m_ObjectHideFlags: 0
