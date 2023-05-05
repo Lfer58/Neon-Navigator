@@ -32,11 +32,18 @@ public class SpawnPoint : MonoBehaviour
     void Update()
     {
         if (!path.isPuzzleLevel) {
-            if(transform.position.y < viewer.transform.position.y + deadHeight  && !isConstantApplicable){ 
+            if(transform.position.y > viewer.transform.position.y + deadHeight  && !isConstantApplicable && deadHeight < 20 && deadHeight > 0){ 
                 // Always make sure that dead heights in camera triggers are appropriate to not mess this up.
                 death();
             }
-            if(transform.position.x < viewer.transform.position.x + deadHeight  && !isConstantApplicable){
+            if(transform.position.y < viewer.transform.position.y + deadHeight  && !isConstantApplicable && deadHeight > -20 && deadHeight < 0){ 
+                // Always make sure that dead heights in camera triggers are appropriate to not mess this up.
+                death();
+            }
+            if(transform.position.x < viewer.transform.position.x + deadHeight  && !isConstantApplicable && deadHeight < -20){
+                death();
+            }
+            if(transform.position.x > viewer.transform.position.x + deadHeight  && !isConstantApplicable && deadHeight > 20){
                 death();
             }
         } else {

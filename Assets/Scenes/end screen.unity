@@ -452,7 +452,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Director\n\r\n\n\nIceman Project Lead\n\n\nStraight-Shooter Project Lead
-    \r\n\n\nDevelopers\n \r\n\r\n\r\n\n\n\r\nMusic Lead\n\n\r\nLead Artist\n"
+    \r\n\n\nDevelopers\n \r\n\r\n\r\n\n\n\r\nMusicians\n\n\r\nArtists\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4eac0cfa4d54da84c95dbbefa7e14be7, type: 2}
   m_sharedMaterial: {fileID: -4423607670348433225, guid: 4eac0cfa4d54da84c95dbbefa7e14be7, type: 2}
@@ -947,7 +947,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Keshav\r\n\r\n\n\nKeshav\r\n\n\nJason\r\n\n\nJune \r\nRuiyang\r\nEthan\r\nAlicia\r\nParker\r\n\r\n\nAlexander\r\n\r\n\nAidan"
+  m_text: "Keshav\r\n\r\n\n\nKeshav\r\n\n\nJason\r\n\n\nJune \r\nRuiyang\r\nEthan\r\nAlicia\r\nParker\r\n\r\n\nAlexander\r\n\r\n\nAidan\nRuiyang"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4eac0cfa4d54da84c95dbbefa7e14be7, type: 2}
   m_sharedMaterial: {fileID: -4423607670348433225, guid: 4eac0cfa4d54da84c95dbbefa7e14be7, type: 2}
