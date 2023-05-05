@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnPoint : MonoBehaviour
 {
@@ -61,8 +62,8 @@ public class SpawnPoint : MonoBehaviour
     }
 
     public void resetSpeeds() { // speed resets from trigger.
-        viewer.speed = baseWalkSpeed;
-        player.walkSpeed = baseCameraSpeed;
+        viewer.speed = baseCameraSpeed;
+        player.walkSpeed = baseWalkSpeed; 
     }
 
     public void resetPath() { // delete all instances of created paths

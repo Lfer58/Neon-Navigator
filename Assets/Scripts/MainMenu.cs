@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         //load iceman
-        SceneManager.LoadScene("iceman");
+        SceneManager.LoadScene("template scene");
     }
 
     public void QuitGame()
