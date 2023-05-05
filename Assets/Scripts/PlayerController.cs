@@ -31,10 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool readyToJump = true;
     private bool grounded = true;
 
-    [Tooltip("Dash Force")]
-    public float dashForce;
-    private bool dashPress;
-
     // Tracker variables
     private float currentSpeed;
     private int currentJumpAmount;
@@ -45,13 +41,15 @@ public class PlayerController : MonoBehaviour
     // Rigid body for movement
     private Rigidbody rb;
     private PlayerControls playerControls;
+    
+    private SpawnPoint spawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         // Intializes the rigid body
         rb = GetComponent<Rigidbody>();
-        
+        spawnPoint = GetComponent<SpawnPoint>();
 
         currentJumpAmount = jumpAmount;
     }
@@ -81,8 +79,7 @@ public class PlayerController : MonoBehaviour
         // Jumping
         JumpInput();
 
-        // Dashing
-        // DashInput();
+        CommitUnalive();
     }
 
     // Called at a consistent pace, 50 FPS
@@ -113,11 +110,6 @@ public class PlayerController : MonoBehaviour
         if (rb.velocity.y < 0 || !grounded) {
             rb.velocity -= Vector3.up * Time.deltaTime * additionalGravity;
         }
-
-        // if (dashPress)
-        // {
-        //     Dash();
-        // }
     }
 
     void MovementInput()
@@ -187,20 +179,10 @@ public class PlayerController : MonoBehaviour
         currentJumpAmount = jumpAmount;
     }
 
-    // void DashInput()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.LeftShift))
-    //     {
-    //         dashPress = true;
-    //     }
-    // }
-
-    // void Dash()
-    // {
-    //     dashPress = false;
-
-    //     rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
-
-    //     rb.AddForce(transform.right * moveInput * dashForce, ForceMode.Impulse);
-    // }
+    void CommitUnalive() {
+        // Makes the player die when pressing the k key
+        if (Input.GetKeyDown(KeyCode.K)) {
+            spawnPoint.death();
+        }
+    }
 }

@@ -13228,13 +13228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397bee52ae3ce46a4bf4e2ee4b5a48c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBase: 1
-  radiusExtends: 5
-  rotationHeight: 30
-  creationRestraint: 30
   path: {fileID: 7826154401641725583, guid: 545ce0a7d1fca444ba228824120bc1b1, type: 3}
   isPuzzleLevel: 0
-  battery: {fileID: 272147986}
 --- !u!114 &2004374003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13251,8 +13246,6 @@ MonoBehaviour:
   deadHeight: -10
   constantDeadHeight: -45
   isConstantApplicable: 1
-  baseWalkSpeed: 10
-  baseCameraSpeed: 6
   isReseted: 0
   baseEnergy: 0
   music: {fileID: 548823596}
@@ -14315,7 +14308,8 @@ PrefabInstance:
       propertyPath: additionalGravity
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3316941054415377289, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
 --- !u!4 &2019795494935618517
 Transform:

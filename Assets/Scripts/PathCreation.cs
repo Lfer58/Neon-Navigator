@@ -6,7 +6,7 @@ using UnityEngine;
 public class PathCreation : MonoBehaviour
 {
     
-    public float playerBase;
+    private float playerBase = 1.0f;
     private float playerY;
     private float playerX;
     private Rigidbody playerRigidBody;
@@ -14,10 +14,10 @@ public class PathCreation : MonoBehaviour
     private bool faceRight;
     private Vector3 mousePositionActual;
     
-    public float radiusExtends;
+    private float radiusExtends = 5.0f;
     private float distanceFromPlayer;
-    public float rotationHeight; //When using up and down, how much the path rotates
-    public float creationRestraint; //Angle of restraint for path creation
+    private float rotationHeight = 30.0f; //When using up and down, how much the path rotates
+    private float creationRestraint = 30.0f; //Angle of restraint for path creation
 
     public GameObject path;
     private GameObject currentPath; //path instance being generated
@@ -35,7 +35,7 @@ public class PathCreation : MonoBehaviour
     private PlayerControls playerControls;
     public bool isPuzzleLevel; //Pathing is not constrained to a certain distance if is puzzle level. In future will be changed by triggers.
 
-    public LineEnergy battery;
+    private LineEnergy battery;
     private float energyCount;
 
 
