@@ -3424,7 +3424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601616354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.22, z: -100}
+  m_LocalPosition: {x: -0.5, y: 0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4045,7 +4045,7 @@ PrefabInstance:
     - target: {fileID: 4157434317809553810, guid: c869787938ef04c45b64d183666a5961, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f18dea86464524f69b3cc60db2f01026, type: 2}
+      objectReference: {fileID: 2100000, guid: 575f2fc4f466d4d90a9e30deb00aa719, type: 2}
     - target: {fileID: 8914989886043081775, guid: c869787938ef04c45b64d183666a5961, type: 3}
       propertyPath: m_Name
       value: Testing Lab #1
