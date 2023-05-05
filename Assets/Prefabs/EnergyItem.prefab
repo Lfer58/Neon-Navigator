@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3f545871e6ad0b429875fb73852a671, type: 2}
+  - {fileID: 2100000, guid: 13fb19729ecf04223a685ad03d0b9d65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   negativeEnergy: 0
-  negativeEnergyMaterial: {fileID: 2100000, guid: b80b25c8f396f7a41bcb9d182502dbf3, type: 2}
+  negativeEnergyMaterial: {fileID: 2100000, guid: 4215f5642d582487c9972308cb79b4ca, type: 2}

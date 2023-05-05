@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 980071003451547538}
   - component: {fileID: 980071003451547542}
   - component: {fileID: 980071003451547545}
+  - component: {fileID: 5563177644594749236}
+  - component: {fileID: 3316941054415377289}
   m_Layer: 0
   m_Name: Beanboy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,15 +131,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f8915e70f4482468124c3937df3b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  additionalGravity: 0
-  jumpForce: 10
-  jumpAmount: 2
+  walkSpeed: 10
+  additionalGravity: 10
+  jumpForce: 5
+  jumpAmount: 1
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  dashForce: 0
+--- !u!114 &5563177644594749236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980071003451547539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397bee52ae3ce46a4bf4e2ee4b5a48c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 7826154401641725583, guid: 545ce0a7d1fca444ba228824120bc1b1, type: 3}
+  isPuzzleLevel: 0
+--- !u!114 &3316941054415377289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980071003451547539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1b545e28e09e94e87b322c7b4a972c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {x: 0, y: 0, z: 0}
+  deadHeight: -10
+  constantDeadHeight: -10
+  isConstantApplicable: 1
+  isReseted: 0
+  baseEnergy: 100
+  music: {fileID: 0}
 --- !u!1 &980071004373600460
 GameObject:
   m_ObjectHideFlags: 0

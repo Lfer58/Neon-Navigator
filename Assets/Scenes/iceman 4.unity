@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1329711569}
-  m_IndirectSpecularColor: {r: 0.3173417, g: 0.32507315, b: 0.42065418, a: 1}
+  m_IndirectSpecularColor: {r: 0.2859698, g: 0.2859698, b: 0.36930305, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14403,13 +14403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397bee52ae3ce46a4bf4e2ee4b5a48c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBase: 1
-  radiusExtends: 5
-  rotationHeight: 30
-  creationRestraint: 30
   path: {fileID: 7826154401641725583, guid: 545ce0a7d1fca444ba228824120bc1b1, type: 3}
   isPuzzleLevel: 0
-  battery: {fileID: 272147986}
 --- !u!114 &2004374003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14426,10 +14421,9 @@ MonoBehaviour:
   deadHeight: -10
   constantDeadHeight: -200
   isConstantApplicable: 1
-  baseWalkSpeed: 10
-  baseCameraSpeed: 6
   isReseted: 0
   baseEnergy: 0
+  music: {fileID: 0}
 --- !u!1001 &2023539658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16162,7 +16156,8 @@ PrefabInstance:
       propertyPath: additionalGravity
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3316941054415377289, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 759921ea3d2154cccbe1ed04e787ad47, type: 3}
 --- !u!1 &4950718992886274884
 GameObject:

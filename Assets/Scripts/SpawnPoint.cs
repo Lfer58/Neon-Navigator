@@ -13,8 +13,8 @@ public class SpawnPoint : MonoBehaviour
     public float deadHeight;
     public float constantDeadHeight; //Can't be manipulated by any other class, and seeks to exists as a hard floor for death.
     public bool isConstantApplicable = true; //Flexibility of height is still maintained within movement levels
-    public float baseWalkSpeed;
-    public float baseCameraSpeed;
+    private const float baseWalkSpeed = 10.0f;
+    private const float baseCameraSpeed = 6.0f;
     public bool isReseted = false;
     public float baseEnergy;
     private LineEnergy battery;
