@@ -12,16 +12,16 @@ EditorBuildSettings:
     path: Assets/Scenes/lab 1.unity
     guid: ad13d0b3f85a45a41ab4347205c41813
   - enabled: 1
-    path: Assets/Scenes/button level1.unity
+    path: Assets/Scenes/lab 2.unity
     guid: 3808285b70ecb23468ff5deecc027379
   - enabled: 1
-    path: Assets/Scenes/energy level.unity
+    path: Assets/Scenes/lab 3.unity
     guid: 2ca1ee81b54771e4db87930af047e929
   - enabled: 1
-    path: Assets/Scenes/danger scene.unity
+    path: Assets/Scenes/lab 4.unity
     guid: 5082f65e34dfdb141a827b8cfa32f45a
   - enabled: 1
-    path: Assets/Scenes/THE level.unity
+    path: Assets/Scenes/lab 5.unity
     guid: b49d26395939e87438e5ca37690ae13b
   - enabled: 1
     path: Assets/Scenes/iceman.unity
