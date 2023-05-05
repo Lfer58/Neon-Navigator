@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: innerTriangle
       objectReference: {fileID: 0}
+    - target: {fileID: 5456376892493081749, guid: 0607e1feca71f44b18929e19598b91b0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92b3aa099ecb9483381c91aba9894aad, type: 2}
     - target: {fileID: 8273096742596560873, guid: 0607e1feca71f44b18929e19598b91b0, type: 3}
       propertyPath: m_RootOrder
       value: 0

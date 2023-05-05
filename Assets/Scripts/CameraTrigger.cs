@@ -14,6 +14,7 @@ public class CameraTrigger : MonoBehaviour
     public float cameraSpeed = 1;
     public float playerSpeed = 5;
     public float deadHeight; //Sets how far/up the camera can be of the player before death
+    public AudioSource music;
 
     // public GameObject door;
 
@@ -42,6 +43,7 @@ public class CameraTrigger : MonoBehaviour
         player.walkSpeed = playerSpeed;
         spawn.deadHeight = deadHeight;
         spawn.isConstantApplicable = false;
+        music.enabled = true;
 
         // Depending on direction set on the created object, creates a vector for that direction
         if (direction == Orientation.Up) {
@@ -52,6 +54,29 @@ public class CameraTrigger : MonoBehaviour
             movement = Vector3.right;
         } else if (direction == Orientation.Left) {
             movement = Vector3.left;
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        // Sets true so the camera then doesn't follow the player and sets the camera movement speed to what is dictated by the autoscroller segment
+        if (!viewer.cameraActivation) {
+            viewer.trigger = this;
+            viewer.cameraActivation = true;
+            viewer.speed = cameraSpeed;
+            player.walkSpeed = playerSpeed;
+            spawn.deadHeight = deadHeight;
+            spawn.isConstantApplicable = false;
+
+            // Depending on direction set on the created object, creates a vector for that direction
+            if (direction == Orientation.Up) {
+                movement = Vector3.up;
+            } else if (direction == Orientation.Down) {
+                movement = Vector3.down;
+            } else if (direction == Orientation.Right) {
+                movement = Vector3.right;
+            } else if (direction == Orientation.Left) {
+                movement = Vector3.left;
+            }
         }
     }
 

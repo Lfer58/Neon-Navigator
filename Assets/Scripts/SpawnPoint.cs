@@ -17,6 +17,7 @@ public class SpawnPoint : MonoBehaviour
     public bool isReseted = false;
     public float baseEnergy;
     private LineEnergy battery;
+    public AudioSource music;
     
     // Start is called before the first frame update
     void Start()
@@ -32,11 +33,18 @@ public class SpawnPoint : MonoBehaviour
     void Update()
     {
         if (!path.isPuzzleLevel) {
-            if(transform.position.y < viewer.transform.position.y + deadHeight){ // Always make sure that dead heights in camera triggers are appropriate to not mess
-                                                                                    // this up.
+            if(transform.position.y > viewer.transform.position.y + deadHeight  && !isConstantApplicable && deadHeight < 20 && deadHeight > 0){ 
+                // Always make sure that dead heights in camera triggers are appropriate to not mess this up.
                 death();
             }
-            if(transform.position.x < viewer.transform.position.x + deadHeight){
+            if(transform.position.y < viewer.transform.position.y + deadHeight  && !isConstantApplicable && deadHeight > -20 && deadHeight < 0){ 
+                // Always make sure that dead heights in camera triggers are appropriate to not mess this up.
+                death();
+            }
+            if(transform.position.x < viewer.transform.position.x + deadHeight  && !isConstantApplicable && deadHeight < -20){
+                death();
+            }
+            if(transform.position.x > viewer.transform.position.x + deadHeight  && !isConstantApplicable && deadHeight > 20){
                 death();
             }
         } else {
@@ -63,11 +71,12 @@ public class SpawnPoint : MonoBehaviour
         }
     }
 
-    private void death () {
+    public void death () {
         transform.position = respawnPoint;
-            viewer.transform.position = respawnPoint;
-            resetSpeeds();
-            resetPath();
-            battery.energy = baseEnergy;
+        viewer.transform.position = respawnPoint;
+        resetSpeeds();
+        resetPath();
+        battery.energy = baseEnergy;
+        music.enabled = false;
     }
 }
